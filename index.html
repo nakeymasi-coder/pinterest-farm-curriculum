@@ -216,12 +216,158 @@
     .lesson,.leavewith,.progress-card,.prompt-card,.homework,.rule,.snags{box-shadow:none;break-inside:avoid}
   }
 </style>
+<style id="curriculum-overhaul">
+
+/* ============================================================
+   OVERHAUL — the farm's world, ported in (design only)
+   ============================================================ */
+body.gate-locked{overflow:hidden}
+
+/* ---------- portal gate (mirrors the Pinterest Farm gate) ---------- */
+#gate{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:radial-gradient(900px 620px at 50% 38%,#8f0f22 0%,#4a0510 58%,#2a0208 100%);transition:transform .7s ease,opacity .7s ease}
+#gate.leaving{transform:scale(1.14);opacity:0;pointer-events:none}
+#gateVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gate-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,0,5,.42) 0%,rgba(24,0,5,.12) 42%,rgba(24,0,5,.6) 100%)}
+.gate-inner{position:relative;text-align:center;padding:24px 18px;max-width:860px}
+.gate-fly{font-size:2rem;opacity:0;animation:gateFade 1s ease .15s forwards;filter:drop-shadow(0 4px 14px rgba(255,80,110,.8))}
+.gate-title{margin:10px 0 0;font-family:"Anton",sans-serif;font-size:clamp(1.9rem,9.2vw,5.4rem);line-height:1.04;font-weight:400;letter-spacing:2px;white-space:nowrap;color:#fff;text-shadow:0 0 16px rgba(255,70,100,.9),0 0 52px rgba(230,0,35,.65),0 5px 16px rgba(0,0,0,.55)}
+.gate-title .gl{display:inline-block;opacity:0;transform:translateY(30px) scale(.9);animation:gateLetter .62s cubic-bezier(.2,.9,.3,1.25) forwards;animation-delay:calc(var(--i)*55ms + 120ms)}
+@keyframes gateLetter{to{opacity:1;transform:translateY(0) scale(1)}}
+.gate-tag{margin:16px auto 0;font-size:clamp(1.05rem,4.4vw,1.45rem);font-weight:700;color:#ffe9ec;text-shadow:0 2px 12px rgba(0,0,0,.6);opacity:0;animation:gateFade .9s ease 1.25s forwards}
+@keyframes gateFade{to{opacity:1}}
+#enterBtn{margin-top:30px;min-height:64px;padding:16px 44px;border:none;border-radius:999px;background:linear-gradient(180deg,#ffffff,#ffe9ec);color:#7c0a1d;font-family:inherit;font-size:1.2rem;font-weight:800;letter-spacing:.4px;cursor:pointer;box-shadow:0 0 0 3px rgba(255,255,255,.35),0 0 34px rgba(255,46,77,.55),0 14px 38px rgba(230,0,35,.5),0 4px 12px rgba(0,0,0,.4);opacity:0;animation:gateFade .8s ease 1.7s forwards,gatePulse 2.2s ease-in-out 2.6s infinite;transition:transform .18s ease}
+#enterBtn:hover{transform:translateY(-2px) scale(1.02)}
+@keyframes gatePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+#enterBtn:active{transform:scale(.98)}
+.gate-note{margin:18px auto 0;color:#f3c3cb;font-size:.95rem;opacity:0;animation:gateFade .8s ease 2s forwards}
+
+/* ---------- ambient farm glow over the page ---------- */
+body{background-image:radial-gradient(920px 520px at 96% -4%,rgba(230,0,35,.10) 0%,rgba(230,0,35,0) 60%),radial-gradient(840px 560px at -6% 26%,rgba(124,10,29,.10) 0%,rgba(124,10,29,0) 60%),radial-gradient(760px 520px at 104% 62%,rgba(230,0,35,.07) 0%,rgba(230,0,35,0) 60%),linear-gradient(180deg,#fffaf7 0%,#f9f0ec 220px),repeating-linear-gradient(0deg,rgba(61,22,32,.030) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(61,22,32,.022) 0 1px,transparent 1px 3px)}
+.wrap{position:relative;z-index:1}
+
+/* ---------- flying pins (fixed ambient layer) ---------- */
+.pin-fx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.fxpin{position:absolute;width:var(--w,150px);will-change:transform;transform:translate(calc(var(--mx,0)*var(--dep,10px)),calc(var(--my,0)*var(--dep,10px)))}
+.fxpin-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.75);box-shadow:0 26px 46px -12px rgba(42,2,8,.48),0 6px 14px rgba(42,2,8,.25),inset 0 1px 0 #fff;animation:pinFloat var(--dur,11s) ease-in-out infinite alternate}
+@keyframes pinFloat{from{transform:rotate(var(--rot,0deg)) translateY(-9px)}to{transform:rotate(var(--rot,0deg)) translateY(13px)}}
+.fxpin-img{display:block;width:100%;aspect-ratio:1/1.02;object-fit:cover;background:#f3d9d3}
+.fxpin-art{aspect-ratio:1/1.02;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px}
+.fxpin-word{font-family:"Anton",sans-serif;font-size:1.45rem;line-height:1.12;letter-spacing:.02em;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.fxpin-word.serif{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-weight:600;text-transform:none}
+.art-glam{background:linear-gradient(150deg,#6ea8e8,#d97cc0 55%,#f2c94c)}
+.art-believe{background:linear-gradient(160deg,#fff6e6,#f0d096)}
+.art-believe .fxpin-word{color:#7c0a1d;text-shadow:none}
+.art-cozy{background:linear-gradient(160deg,#8f0f22,#4a0510)}
+.art-morning{background:linear-gradient(160deg,#ffd9a0,#ff9d7a 58%,#e86a92)}
+.art-morning .fxpin-word{color:#5c0a18;text-shadow:0 1px 0 rgba(255,255,255,.4)}
+.art-hello{background:linear-gradient(150deg,#ffe3ec,#f4a9c4)}
+.art-hello .fxpin-word{color:#a30f24;text-shadow:none}
+.art-studio{background:linear-gradient(150deg,#bcd7f7,#6ea8e8)}
+.art-studio .fxpin-word{color:#123a63;text-shadow:0 1px 0 rgba(255,255,255,.45)}
+.art-holiday{background:linear-gradient(150deg,#a30f24,#dd8a3d)}
+.art-faith{background:linear-gradient(160deg,#fdf0ea,#e3bda6)}
+.art-faith .fxpin-word{color:#7c0a1d;text-shadow:none}
+.art-tips{background:linear-gradient(150deg,#330d16,#7c0a1d)}
+.art-ginger{background:linear-gradient(150deg,#a35a24,#dfa050)}
+.fxpin-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px 11px}
+.fxpin-t{font-size:11px;font-weight:700;line-height:1.32;color:#330d16}
+.fxpin-save{flex:0 0 auto;background:#e60023;color:#fff;font-size:11px;font-weight:800;letter-spacing:.02em;border-radius:999px;padding:4px 11px;box-shadow:0 4px 10px rgba(230,0,35,.45)}
+@media (max-width:1180px){.pin-fx{opacity:.5}}
+@media (max-width:820px){.pin-fx{opacity:.32}}
+@media (max-width:640px){.pin-fx{opacity:.26}.fxpin:nth-child(n+6){display:none}}
+
+/* ---------- pearl-glass depth on the interior cards ---------- */
+.lesson,.progress-card,.prompt-card,.proof a,.rule,.homework,.download-bar,.snags,.checklist,.closing{box-shadow:0 24px 46px -18px rgba(42,2,8,.38),0 5px 12px rgba(42,2,8,.14),inset 0 1px 0 #fff}
+.lesson,.progress-card,.prompt-card,.proof a,.rule,.homework,.download-bar,.checklist{background-image:linear-gradient(180deg,rgba(255,253,251,.99),rgba(253,238,240,.96))}
+.lesson{transition:transform .18s ease-out;will-change:transform}
+.proof a{transition:transform .18s ease-out,border-color .18s ease;will-change:transform}
+.demo-player{box-shadow:0 30px 54px -18px rgba(42,10,18,.55),0 6px 14px rgba(42,10,18,.25)}
+
+/* ---------- pin-dot section headers (the farm's red pin) ---------- */
+.sec-head h2{position:relative;padding-left:27px}
+.sec-head h2::before{content:"";position:absolute;left:0;top:.34em;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 32%,#ff9fb0,#e60023 58%,#9e0018);box-shadow:0 2px 6px rgba(120,0,18,.5),inset 0 -2px 3px rgba(0,0,0,.3)}
+.sec-head h2::after{content:"";position:absolute;left:27px;bottom:-7px;height:3px;width:56px;border-radius:3px;background:linear-gradient(90deg,#e60023,#ff2e4d,rgba(255,46,77,0));animation:h2Sweep 3.4s ease-in-out infinite alternate}
+@keyframes h2Sweep{from{width:38px;opacity:.6}to{width:96px;opacity:1}}
+
+/* ---------- glowing pill buttons ---------- */
+.download-btn,.copy-btn,.demo-btn{position:relative;overflow:hidden;border-radius:999px;background:linear-gradient(180deg,#ff4d67,#e60023 55%,#b0001c);border:1px solid #8f0f22;box-shadow:0 0 0 3px rgba(255,120,140,.22),0 14px 30px -8px rgba(230,0,35,.55),0 4px 10px rgba(90,0,15,.3),inset 0 1px 0 rgba(255,255,255,.5);transition:transform .18s ease,box-shadow .18s ease}
+.download-btn:hover,.copy-btn:hover,.demo-btn:hover{background:linear-gradient(180deg,#ff5f76,#f01030 55%,#bc001f);transform:translateY(-2px);box-shadow:0 0 0 3px rgba(255,120,140,.3),0 20px 36px -8px rgba(230,0,35,.6),0 6px 12px rgba(90,0,15,.3),inset 0 1px 0 rgba(255,255,255,.55)}
+.download-btn:active,.copy-btn:active,.demo-btn:active{transform:translateY(0) scale(.98)}
+.download-btn::after,.copy-btn::after,.demo-btn::after,.cta-a::after{content:"";position:absolute;top:0;left:-90%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:pillSheen 3.8s ease-in-out infinite;pointer-events:none}
+@keyframes pillSheen{0%,55%{left:-90%}88%,100%{left:140%}}
+.copy-btn.copied{background:linear-gradient(180deg,#6f9a2e,#4c6414);border-color:#3c5010}
+.demo-btn.ghost{background:transparent;box-shadow:none;border:1.5px solid rgba(255,176,188,.55)}
+.demo-btn.ghost::after{display:none}
+.demo-btn.ghost:hover{background:rgba(230,0,35,.12);transform:translateY(-2px)}
+.complete-btn{border-radius:999px;background:linear-gradient(180deg,#ffffff,#ffe9ec);border:1.5px solid #f0a3b0;color:#7c0a1d;box-shadow:0 10px 24px -10px rgba(230,0,35,.4),inset 0 1px 0 #fff;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,color .18s ease}
+.complete-btn:hover{border-color:#e60023;color:#e60023;transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(230,0,35,.5),inset 0 1px 0 #fff}
+.complete-btn:active{transform:translateY(0) scale(.98)}
+.lesson.done .complete-btn{background:linear-gradient(180deg,#6f9a2e,#4c6414);border-color:#3c5010;color:#fff}
+.cta-footer a{border-radius:999px;position:relative;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
+.cta-a{background:linear-gradient(180deg,#ff4d67,#e60023 55%,#a30f24);border:1px solid #8f0f22;box-shadow:0 0 0 3px rgba(255,120,140,.22),0 16px 32px -8px rgba(230,0,35,.55),inset 0 1px 0 rgba(255,255,255,.5)}
+.cta-a:hover{background:linear-gradient(180deg,#ff5f76,#f01030 55%,#b30d28);transform:translateY(-2px)}
+.cta-b{background:linear-gradient(180deg,#ffffff,#ffe9ec);border:1.5px solid #f0a3b0;color:#7c0a1d;box-shadow:0 12px 26px -10px rgba(230,0,35,.35),inset 0 1px 0 #fff}
+.cta-b:hover{border-color:#e60023;transform:translateY(-2px)}
+.cta-footer a:active{transform:translateY(0) scale(.98)}
+.chip{box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+.stopnum{box-shadow:0 8px 18px -6px rgba(230,0,35,.6),inset 0 1px 0 rgba(255,255,255,.4)}
+.kicker{border-radius:999px;box-shadow:0 8px 18px -8px rgba(179,13,40,.7)}
+
+/* ---------- sticky top bar: glass + live progress ---------- */
+.topbar{background:rgba(255,250,247,.92);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);box-shadow:0 10px 26px -14px rgba(42,2,8,.35)}
+.top-progress{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:800;letter-spacing:.05em;color:#fff;background:linear-gradient(135deg,#ff2e4d,#e60023 60%,#b0001c);border-radius:999px;padding:5px 13px;box-shadow:0 6px 16px -4px rgba(230,0,35,.55),inset 0 1px 0 rgba(255,255,255,.4);white-space:nowrap}
+
+/* ---------- reveal on scroll ---------- */
+.rv{opacity:0;transform:translateY(22px)}
+.rv.in{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+
+/* ---------- celebration burst ---------- */
+.burst-dot{position:fixed;width:9px;height:9px;border-radius:50%;pointer-events:none;z-index:300;box-shadow:0 2px 6px rgba(42,2,8,.3)}
+
+@media (prefers-reduced-motion: reduce){
+  .gate-title .gl,.gate-tag,.gate-note,.gate-fly,#enterBtn,.fxpin-card,.sec-head h2::after,.download-btn::after,.copy-btn::after,.demo-btn::after,.cta-a::after{animation:none!important}
+  .gate-title .gl,.gate-tag,.gate-note,.gate-fly,#enterBtn{opacity:1!important;transform:none!important}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  #gate,.pin-fx,.burst-dot{display:none !important}
+}
+
+</style>
 </head>
 <body>
+
+<div id="gate" role="dialog" aria-label="Pinterest Farm curriculum entrance">
+<video id="gateVideo" autoplay muted loop playsinline preload="auto" src="portal-intro.mp4"></video>
+<div class="gate-shade"></div>
+<div class="gate-inner">
+<div class="gate-fly">🦋</div>
+<h1 class="gate-title" id="gateTitle">PINTEREST FARM</h1>
+<p class="gate-tag">The Student Curriculum — Build It As You Learn 🦋</p>
+<button type="button" id="enterBtn">Enter the Curriculum</button>
+<p class="gate-note">Your step-by-step build is right through the portal.</p>
+</div>
+</div>
+
+<div class="pin-fx" id="pinFx" aria-hidden="true">
+<div class="fxpin" style="left:-34px;top:11%;--w:168px;--dep:15px;--rot:-5deg;--dur:12s;animation-delay:-2s"><div class="fxpin-card"><img class="fxpin-img" src="https://nakeymasi-coder.github.io/glam-vault-ad/hero.webp" alt="" loading="lazy"><div class="fxpin-meta"><span class="fxpin-t">Glam Doll Style Inspo — Sapphire Suit</span><span class="fxpin-save">Save</span></div></div></div>
+<div class="fxpin" style="left:2%;top:45%;--w:132px;--dep:8px;--rot:4deg;--dur:10s;animation-delay:-6s"><div class="fxpin-card"><div class="fxpin-art art-glam"><span class="fxpin-word">GLAM</span></div><div class="fxpin-meta"><span class="fxpin-t">GLAM Typography Art — Jeweled Script</span><span class="fxpin-save">Save</span></div></div></div>
+<div class="fxpin" style="left:-16px;top:73%;--w:150px;--dep:12px;--rot:-3deg;--dur:13s;animation-delay:-4s"><div class="fxpin-card"><div class="fxpin-art art-believe"><span class="fxpin-word serif">Believe</span></div><div class="fxpin-meta"><span class="fxpin-t">Word of the Day — Believe</span><span class="fxpin-save">Save</span></div></div></div>
+<div class="fxpin" style="right:-28px;top:8%;--w:162px;--dep:14px;--rot:5deg;--dur:11.5s;animation-delay:-3s"><div class="fxpin-card"><div class="fxpin-art art-cozy"><span class="fxpin-word">Cozy</span></div><div class="fxpin-meta"><span class="fxpin-t">Cozy Winter Glam in a Pink Faux Fur Coat</span><span class="fxpin-save">Save</span></div></div></div>
+<div class="fxpin" style="right:1.5%;top:37%;--w:140px;--dep:9px;--rot:-4deg;--dur:10.5s;animation-delay:-7s"><div class="fxpin-card"><img class="fxpin-img" src="https://nakeymasi-coder.github.io/glam-vault-ad/hero.webp" alt="" loading="lazy"><div class="fxpin-meta"><span class="fxpin-t">Your Next Post? You Decide — Style Her</span><span class="fxpin-save">Save</span></div></div></div>
+<div class="fxpin" style="right:-20px;top:67%;--w:170px;--dep:13px;--rot:3deg;--dur:12.5s;animation-delay:-1s"><div class="fxpin-card"><div class="fxpin-art art-morning"><span class="fxpin-word">Good Morning</span></div><div class="fxpin-meta"><span class="fxpin-t">Good Morning Affirmations for Women</span><span class="fxpin-save">Save</span></div></div></div>
+<div class="fxpin" style="left:6%;top:25%;--w:110px;--dep:5px;--rot:6deg;--dur:9.5s;animation-delay:-5s"><div class="fxpin-card"><div class="fxpin-art art-hello"><span class="fxpin-word">Hello Gorgeous</span></div><div class="fxpin-meta"><span class="fxpin-t">Hello Gorgeous — Poster Art</span><span class="fxpin-save">Save</span></div></div></div>
+<div class="fxpin" style="right:5%;top:55%;--w:112px;--dep:6px;--rot:-6deg;--dur:10s;animation-delay:-8s"><div class="fxpin-card"><div class="fxpin-art art-studio"><span class="fxpin-word">Studio</span></div><div class="fxpin-meta"><span class="fxpin-t">Sapphire Studio Setup — Creator Desk Inspo</span><span class="fxpin-save">Save</span></div></div></div>
+<div class="fxpin" style="left:4%;top:88%;--w:120px;--dep:7px;--rot:2deg;--dur:11s;animation-delay:-9s"><div class="fxpin-card"><div class="fxpin-art art-holiday"><span class="fxpin-word">Merry &amp; Glam</span></div><div class="fxpin-meta"><span class="fxpin-t">Holiday Glam &amp; Cozy Vibes</span><span class="fxpin-save">Save</span></div></div></div>
+<div class="fxpin" style="right:6%;top:84%;--w:118px;--dep:6px;--rot:-2deg;--dur:10.8s;animation-delay:-2.5s"><div class="fxpin-card"><div class="fxpin-art art-tips"><span class="fxpin-word">Creator Tips</span></div><div class="fxpin-meta"><span class="fxpin-t">5 Words That Upgrade Any AI Prompt</span><span class="fxpin-save">Save</span></div></div></div>
+<div class="fxpin" style="left:-42px;top:58%;--w:104px;--dep:4px;--rot:7deg;--dur:9s;animation-delay:-6.5s"><div class="fxpin-card"><div class="fxpin-art art-faith"><span class="fxpin-word serif">Faith &amp; Focus</span></div><div class="fxpin-meta"><span class="fxpin-t">Faith &amp; Focus — Morning Routine</span><span class="fxpin-save">Save</span></div></div></div>
+<div class="fxpin" style="right:-46px;top:23%;--w:108px;--dep:5px;--rot:-7deg;--dur:9.8s;animation-delay:-4.5s"><div class="fxpin-card"><div class="fxpin-art art-ginger"><span class="fxpin-word">Gingerbread</span></div><div class="fxpin-meta"><span class="fxpin-t">Gingerbread Cutie — Holiday Art</span><span class="fxpin-save">Save</span></div></div></div>
+</div>
 
 <div class="topbar">
   <div class="topbar-in">
     <span class="brand">The Pinterest Farm · Student Curriculum</span>
+    <span class="top-progress" id="topProgress">0% complete</span>
     <nav>
       <a href="#farm-demo">Farm Demo</a>
       <a href="#lessons">Lessons</a>
@@ -1188,6 +1334,136 @@ would normally use, this prompt wins.
   document.getElementById('demoRestart').addEventListener('click', function(){ idx = 0; elapsed = 0; bar.style.width = '0%'; render(); setPlay(true); });
   render();
   if(reduce){ setPlay(false); } else { setPlay(true); }
+})();
+</script>
+
+<script>
+/* ============================================================
+   OVERHAUL — gate, flying-pin parallax, reveal, tilt, bursts
+   (enhancement layer: the four curriculum scripts above are
+   untouched and keep their exact behavior)
+   ============================================================ */
+(function(){
+"use strict";
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- Portal entrance gate (mirrors the farm) ---------- */
+var gate = document.getElementById('gate');
+if(gate){
+  document.body.classList.add('gate-locked');
+  var title = document.getElementById('gateTitle');
+  if(title){
+    var txt = title.textContent; title.textContent = '';
+    for(var i = 0; i < txt.length; i++){
+      var s = document.createElement('span'); s.className = 'gl'; s.style.setProperty('--i', i);
+      s.textContent = (txt.charAt(i) === ' ') ? '\u00A0' : txt.charAt(i);
+      title.appendChild(s);
+    }
+  }
+  var vid = document.getElementById('gateVideo');
+  if(vid){
+    var kill = function(){ vid.style.display = 'none'; };
+    vid.addEventListener('error', kill);
+    var pp = vid.play && vid.play(); if(pp && pp.catch) pp.catch(function(){});
+  }
+  var enter = function(){
+    if(gate.classList.contains('leaving')) return;
+    gate.classList.add('leaving');
+    document.body.classList.remove('gate-locked');
+    if(vid){ try{ vid.pause(); }catch(e){} }
+    setTimeout(function(){ gate.style.display = 'none'; }, 730);
+  };
+  var btn = document.getElementById('enterBtn');
+  if(btn) btn.addEventListener('click', enter);
+}
+
+/* ---------- Flying pins: mouse parallax by depth ---------- */
+var fx = document.getElementById('pinFx');
+if(fx && !reduce && window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches){
+  var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+  function loop(){
+    cx += (tx - cx) * 0.06; cy += (ty - cy) * 0.06;
+    fx.style.setProperty('--mx', cx.toFixed(3));
+    fx.style.setProperty('--my', cy.toFixed(3));
+    if(Math.abs(tx - cx) > 0.002 || Math.abs(ty - cy) > 0.002){ raf = requestAnimationFrame(loop); }
+    else { raf = null; }
+  }
+  window.addEventListener('mousemove', function(e){
+    tx = (e.clientX / window.innerWidth - 0.5) * 2;
+    ty = (e.clientY / window.innerHeight - 0.5) * 2;
+    if(!raf) raf = requestAnimationFrame(loop);
+  }, {passive:true});
+}
+
+/* ---------- Reveal on scroll ---------- */
+var revealEls = document.querySelectorAll('section.block, .lesson, .proof a, .rule, .homework, .prompt-card, .closing, .download-bar, .leavewith, .progress-card, .checklist, .snags, .demo-player');
+if('IntersectionObserver' in window && !reduce){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var el = en.target;
+        el.classList.add('in');
+        io.unobserve(el);
+        setTimeout(function(){ el.classList.remove('rv'); el.classList.remove('in'); }, 800);
+      }
+    });
+  }, {threshold: 0.08, rootMargin: '0px 0px -4% 0px'});
+  revealEls.forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+}
+
+/* ---------- Sticky-bar progress + celebration bursts ---------- */
+var topPct = document.getElementById('topProgress');
+var lessonsAll = document.querySelectorAll('[data-lesson]');
+function syncTop(){
+  if(!topPct) return;
+  var done = 0;
+  lessonsAll.forEach(function(l){ if(l.classList.contains('done')) done++; });
+  var pct = lessonsAll.length ? Math.round(done / lessonsAll.length * 100) : 0;
+  topPct.textContent = pct + '% complete';
+}
+syncTop();
+var burstColors = ['#e60023', '#ff2e4d', '#ffb0bc', '#f2c94c', '#ffffff', '#7c0a1d'];
+function burst(x, y){
+  if(reduce) return;
+  for(var i = 0; i < 16; i++){
+    var d = document.createElement('span');
+    d.className = 'burst-dot';
+    d.style.background = burstColors[i % burstColors.length];
+    d.style.left = x + 'px'; d.style.top = y + 'px';
+    document.body.appendChild(d);
+    var ang = (Math.PI * 2 * i) / 16 + Math.random() * 0.5;
+    var dist = 52 + Math.random() * 62;
+    var dx = Math.cos(ang) * dist, dy = Math.sin(ang) * dist - 18;
+    var anim = null;
+    try{ anim = d.animate([
+      {transform: 'translate(-50%,-50%) scale(1)', opacity: 1},
+      {transform: 'translate(calc(-50% + ' + dx + 'px), calc(-50% + ' + dy + 'px)) scale(0.25)', opacity: 0}
+    ], {duration: 680 + Math.random() * 260, easing: 'cubic-bezier(.17,.67,.35,1)'}); }catch(e){ anim = null; }
+    (function(el, a){ if(a && a.finished) a.finished.then(function(){ el.remove(); }); else setTimeout(function(){ el.remove(); }, 1000); })(d, anim);
+  }
+}
+document.querySelectorAll('[data-complete]').forEach(function(b){
+  b.addEventListener('click', function(){
+    syncTop();
+    var lesson = b.closest('[data-lesson]');
+    if(lesson && lesson.classList.contains('done')){
+      var r = b.getBoundingClientRect();
+      burst(r.left + r.width / 2, r.top + r.height / 2);
+    }
+  });
+});
+
+/* ---------- Lesson-card tilt (fine pointers only, farm-style) ---------- */
+if(!reduce && window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.querySelectorAll('.lesson, .proof a, .rule').forEach(function(el){
+    el.addEventListener('pointermove', function(e){
+      var r = el.getBoundingClientRect(); if(!r.width || !r.height) return;
+      var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      el.style.transform = 'perspective(900px) rotateY(' + (x * 3.2).toFixed(2) + 'deg) rotateX(' + (-y * 3.2).toFixed(2) + 'deg)';
+    });
+    el.addEventListener('pointerleave', function(){ el.style.transform = ''; });
+  });
+}
 })();
 </script>
 </body>
