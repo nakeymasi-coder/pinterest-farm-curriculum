@@ -392,6 +392,7 @@ body{background-image:radial-gradient(920px 520px at 96% -4%,rgba(230,0,35,.10) 
   <div class="download-bar">
     <p><strong>Keep this curriculum.</strong> Download a copy to your device so you can work from it anytime — even offline.</p>
     <button class="download-btn" id="downloadBtn" type="button">⬇ Download this curriculum</button>
+    <button class="download-btn" id="phoneBtn" type="button" style="margin-left:10px">📲 Add to Your Phone</button>
     <span class="download-status" id="downloadStatus" role="status" aria-live="polite"></span>
   </div>
 
@@ -401,6 +402,7 @@ body{background-image:radial-gradient(920px 520px at 96% -4%,rgba(230,0,35,.10) 
       <div class="ptitle">Inside the Pinterest Farm — the 10-second tour</div>
       <video controls playsinline preload="none" poster="demo-poster.jpg" src="demo-farm.mp4" style="width:100%;border-radius:12px;display:block;margin-top:10px;background:#2b000a"></video>
       <div class="pgo">Watch-only — students build their own farm from the Master Prompt below ↓</div>
+      <a href="demo-farm.mp4" download="pinterest-farm-demo.mp4" style="display:inline-block;margin-top:8px;font-weight:700;color:var(--wine)">⬇ Download the demo video</a>
     </div>
     <a href="#farm-demo">
       <div class="plabel">Watch · The Farm Demo</div>
@@ -1465,6 +1467,40 @@ if(!reduce && window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)'
     el.addEventListener('pointerleave', function(){ el.style.transform = ''; });
   });
 }
+})();
+</script>
+
+<div id="phoneModal" role="dialog" aria-modal="true" aria-labelledby="phoneModalTitle" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(30,0,8,.72);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:18px">
+  <div style="background:linear-gradient(180deg,#fff8f6,#ffeef1);border:2px solid #f3b7c2;border-radius:22px;max-width:430px;width:100%;padding:24px 22px;box-shadow:0 24px 60px rgba(0,0,0,.5);max-height:88vh;overflow:auto">
+    <h3 id="phoneModalTitle" style="margin:0 0 6px;color:#8f0f24">Put It On Your Phone 📲</h3>
+    <p style="margin:0 0 12px">Add this class to your home screen and it opens like an app — no hunting for the link. Do the same thing with <b>your own farm page</b> when yours is built.</p>
+    <p style="margin:0 0 6px"><b>On iPhone (Safari)</b></p>
+    <ol style="margin:0 0 12px;padding-left:20px;line-height:1.55">
+      <li>Open this page in <b>Safari</b>.</li>
+      <li>Tap the <b>Share</b> button (the square with the arrow).</li>
+      <li>Tap <b>Add to Home Screen</b>.</li>
+      <li>Name it <b>Pinterest Farm</b> and tap <b>Add</b>.</li>
+    </ol>
+    <p style="margin:0 0 6px"><b>On Android (Chrome)</b></p>
+    <ol style="margin:0 0 14px;padding-left:20px;line-height:1.55">
+      <li>Open this page in <b>Chrome</b>.</li>
+      <li>Tap the <b>⋮ menu</b> in the top corner.</li>
+      <li>Tap <b>Add to Home screen</b> (or <b>Install app</b>).</li>
+      <li>Tap <b>Add</b> to confirm.</li>
+    </ol>
+    <button id="phoneClose" type="button" class="download-btn" style="width:100%">Got It — Take Me Back</button>
+  </div>
+</div>
+<script>
+(function(){
+  var m=document.getElementById('phoneModal'), open=document.getElementById('phoneBtn'), close=document.getElementById('phoneClose');
+  if(!m||!open) return;
+  function show(){m.style.display='flex';}
+  function hide(){m.style.display='none';}
+  open.addEventListener('click',show);
+  if(close) close.addEventListener('click',hide);
+  m.addEventListener('click',function(e){if(e.target===m)hide();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
 })();
 </script>
 </body>
