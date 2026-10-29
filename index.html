@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<meta name="theme-color" content="#7c0a1d">
+<title>The Pinterest Farm — Your Step-by-Step Curriculum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Franklin:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f9f0ec; --paper:#fffaf7; --cream:#fdf0ea; --cream2:#f9e0d8;
+    --ink:#330d16; --ink-body:#3d1620; --ink2:#6d3542; --muted:#9c6d76;
+    --line:#f0c6bc; --line-strong:#dd9a8d;
+    --wine:#b30d28; --wine-deep:#7c0a1d;
+    --gold:#e60023; --gold-soft:#ffd9de; --gold-pale:#ffb0bc;
+    --pumpkin:#c8102e;
+    --good:#4c6414; --good-tint:#eef0d8;
+    --warn-bg:#fdf3d3; --warn-line:#dfb95e; --warn-ink:#7a4a06;
+    --radius:8px;
+    --shadow:0 1px 2px rgba(61,22,32,.08),0 14px 30px -18px rgba(61,22,32,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);background-image:linear-gradient(180deg,#fffaf7 0%,#f9f0ec 220px),repeating-linear-gradient(0deg,rgba(61,22,32,.030) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(61,22,32,.022) 0 1px,transparent 1px 3px);color:var(--ink-body);font-family:"Libre Franklin",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+  h1,h2,h3{margin:0;line-height:1.25;font-weight:700;color:var(--ink)}
+  p{margin:0}
+  button{font-family:inherit;cursor:pointer}
+  a{color:var(--pumpkin)}
+  :focus-visible{outline:2px solid var(--pumpkin);outline-offset:2px}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px 64px}
+
+  /* Header */
+  .topbar{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:3px solid var(--gold)}
+  .topbar-in{max-width:920px;margin:0 auto;padding:10px 20px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between}
+  .topbar .brand{font-size:.82rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink)}
+  .topbar nav{display:flex;gap:16px;flex-wrap:wrap}
+  .topbar nav a{font-size:13.5px;font-weight:600;text-decoration:none;color:var(--pumpkin)}
+  .topbar nav a:hover{color:var(--wine);text-decoration:underline}
+
+  .hero{padding:44px 0 8px;position:relative}
+  .pin-band{height:16px;border-radius:4px;margin:0 0 26px;background:radial-gradient(circle at 8px 8px,rgba(255,250,247,.95) 3.2px,rgba(255,250,247,0) 4px) 0 0/26px 16px repeat-x,linear-gradient(90deg,var(--wine-deep),var(--gold) 50%,var(--wine-deep))}
+  .kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);background:var(--wine);padding:6px 14px;border-radius:3px;margin:0 0 16px}
+  .hero h1{font-family:"Anton",sans-serif;font-weight:400;font-size:clamp(2.05rem,6.4vw,3.4rem);letter-spacing:.01em;line-height:1.14;text-shadow:3px 3px 0 rgba(230,0,35,.30)}
+  .hero .sub{margin-top:16px;font-size:1.16rem;color:var(--ink2);max-width:660px;line-height:1.55}
+  .hero .byline{margin-top:16px;font-size:14.5px;color:var(--muted)}
+  .hero .byline strong{color:var(--ink)}
+
+  /* Download bar */
+  .download-bar{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-top:5px solid var(--pumpkin);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+  .download-bar p{font-size:14.5px;color:var(--ink2);flex:1 1 260px}
+  .download-bar p strong{color:var(--ink)}
+  .download-btn{display:inline-flex;align-items:center;gap:8px;background:var(--pumpkin);color:#ffffff;border:1px solid var(--wine);border-radius:var(--radius);padding:12px 20px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;min-height:48px;text-decoration:none;box-shadow:0 10px 20px -10px rgba(179,13,40,.5)}
+  .download-btn:hover{background:var(--wine)}
+  .download-status{font-size:13.5px;font-weight:600;color:var(--good)}
+
+  .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 8px}
+  .proof a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;text-decoration:none;box-shadow:var(--shadow)}
+  .proof a:hover{border-color:var(--line-strong)}
+  .proof .plabel{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--wine);margin-bottom:4px}
+  .proof .ptitle{font-weight:700;color:var(--ink);font-size:15.5px;line-height:1.35}
+  .proof .pgo{font-size:13px;color:var(--pumpkin);font-weight:600;margin-top:6px}
+
+  .leavewith{background:var(--cream2);border:2px solid var(--gold);border-radius:var(--radius);padding:22px 24px;margin:24px 0 0}
+  .leavewith h2{font-family:"Anton",sans-serif;font-weight:400;font-size:1.25rem;letter-spacing:.01em;margin-bottom:12px}
+  .leavewith ol{margin:0;padding-left:22px;color:var(--ink2)}
+  .leavewith li{margin:5px 0}
+  .leavewith li strong{color:var(--ink)}
+  .needline{margin-top:14px;padding-top:14px;border-top:1px solid var(--line-strong);font-size:14.5px;color:var(--ink2)}
+  .needline strong{color:var(--ink)}
+
+  /* Progress */
+  .progress-card{margin-top:24px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow)}
+  .progress-card .p-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .progress-card h2{font-family:"Anton",sans-serif;font-weight:400;font-size:1.15rem;letter-spacing:.01em}
+  .progress-count{font-size:14px;font-weight:700;color:var(--wine)}
+  .progress-track{height:10px;background:var(--cream2);border:1px solid var(--line);border-radius:999px;margin-top:12px;overflow:hidden}
+  .progress-track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pumpkin),var(--gold));border-radius:999px;transition:width .3s ease}
+  .progress-card p{margin-top:10px;font-size:14px;color:var(--ink2)}
+
+  /* Sections */
+  section.block{margin-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line-strong);padding-bottom:10px;margin-bottom:20px;flex-wrap:wrap}
+  .sec-head h2{font-family:"Anton",sans-serif;font-weight:400;font-size:1.45rem;letter-spacing:.01em;line-height:1.3;color:var(--pumpkin);text-shadow:2px 2px 0 rgba(230,0,35,.22)}
+  .sec-head .sec-note{font-size:13.5px;color:var(--muted);font-weight:600}
+
+  /* Lesson cards */
+  .lesson{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:18px;overflow:hidden}
+  .lesson.done{border-color:var(--good)}
+  .lesson-head{display:flex;gap:16px;align-items:flex-start;padding:20px 24px 0}
+  .stopnum{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--pumpkin);color:#ffffff;display:flex;align-items:center;justify-content:center;font-family:"Anton",sans-serif;font-weight:400;font-size:17px;margin-top:2px}
+  .lesson.done .stopnum{background:var(--good)}
+  .lesson-head h3{font-size:20px}
+  .lesson-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .chip{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;padding:3px 10px;border-radius:999px;background:var(--cream2);color:var(--wine)}
+  .chip.star{background:var(--ink);color:var(--cream)}
+  .chip.done-chip{background:var(--good);color:#fff;display:none}
+  .lesson.done .chip.done-chip{display:inline-block}
+  .lesson-body{padding:16px 24px 22px 84px}
+  .row{margin-bottom:14px}
+  .row:last-child{margin-bottom:0}
+  .row .tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+  .tag.why{color:var(--pumpkin)} .tag.follow{color:var(--warn-ink)} .tag.turn{color:var(--good)}
+  .row ul{margin:4px 0 0;padding-left:20px;color:var(--ink2)}
+  .row ul li{margin:4px 0}
+  .row ul li strong,.row p strong{color:var(--ink)}
+  .row p{color:var(--ink2)}
+  .remember{margin-top:14px;background:var(--cream2);border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px;font-size:14.5px;color:var(--ink2)}
+  .remember strong{color:var(--ink)}
+  .complete-row{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .complete-btn{background:var(--paper);color:var(--ink);border:1.5px solid var(--line-strong);border-radius:var(--radius);padding:11px 18px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;min-height:46px}
+  .complete-btn:hover{border-color:var(--pumpkin);color:var(--pumpkin)}
+  .lesson.done .complete-btn{background:var(--good);border-color:var(--good);color:#fff}
+  .complete-hint{font-size:13.5px;color:var(--muted)}
+
+  .pipeline{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 4px}
+  .pipeline span{font-size:12.5px;font-weight:800;letter-spacing:.05em;background:var(--cream2);color:var(--wine);padding:5px 11px;border-radius:6px}
+  .pipeline i{font-style:normal;color:var(--gold);font-weight:700}
+
+  /* Starter prompt box */
+  .starterbox{margin-top:12px;background:var(--cream);border:2px solid var(--line-strong);border-radius:var(--radius);padding:14px 16px;font-size:15px;line-height:1.55;color:var(--ink-body)}
+  .starterbox .sb-label{display:block;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--wine);margin-bottom:6px}
+
+  /* Master prompt */
+  .prompt-card{background:var(--paper);border:1px solid var(--line);border-top:5px solid var(--pumpkin);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+  .prompt-card h3{font-size:19px;margin-bottom:8px}
+  .prompt-card p{color:var(--ink2);font-size:15px}
+  .copy-btn{margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:var(--pumpkin);color:#ffffff;border:1px solid var(--wine);border-radius:var(--radius);padding:13px 22px;font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer;min-height:48px;box-shadow:0 10px 20px -10px rgba(179,13,40,.5)}
+  .copy-btn:hover{background:var(--wine)}
+  .copy-btn.copied{background:var(--good);border-color:var(--good)}
+  details.prompt-view{margin-top:16px;border:1px solid var(--line);border-radius:var(--radius)}
+  details.prompt-view summary{cursor:pointer;font-weight:600;font-size:14.5px;color:var(--pumpkin);padding:11px 15px}
+  details.prompt-view pre{margin:0;padding:16px;background:var(--cream);border-top:1px solid var(--line);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.8px;line-height:1.55;white-space:pre-wrap;word-break:break-word;max-height:420px;overflow:auto;color:var(--ink2)}
+
+  /* Checklist */
+  .checklist{list-style:none;margin:0;padding:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .checklist li{display:flex;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line);color:var(--ink2);align-items:flex-start}
+  .checklist li:last-child{border-bottom:none}
+  .box{flex:0 0 auto;width:20px;height:20px;border:2px solid var(--line-strong);border-radius:5px;margin-top:3px;background:var(--cream)}
+  .checklist li strong{color:var(--ink)}
+
+  /* Watch-outs + rules */
+  .snags{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:var(--radius);padding:22px 24px}
+  .snags h3{font-size:19px;margin-bottom:6px;color:var(--ink)}
+  .snags>p{color:var(--warn-ink);font-size:14.5px;margin-bottom:12px}
+  .snags ul{margin:0;padding-left:20px;color:var(--ink-body)}
+  .snags li{margin:8px 0}
+  .rules{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .rule{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
+  .rule .rnum{font-family:"Anton",sans-serif;font-size:12px;font-weight:400;letter-spacing:.1em;color:var(--pumpkin);text-transform:uppercase;margin-bottom:5px}
+  .rule h3{font-size:16.5px;margin-bottom:6px}
+  .rule p{font-size:14.5px;color:var(--ink2)}
+
+  .homework{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow)}
+  .homework ol{margin:10px 0 0;padding-left:22px;color:var(--ink2)}
+  .homework ol li{margin:7px 0}
+  .homework ol li strong{color:var(--ink)}
+
+  /* Farm demo video (watch-only) */
+  .demo-section{margin-top:36px}
+  .demo-player{background:#2a0a12;color:#fdf0ea;border:1px solid #330d16;border-radius:10px;overflow:hidden;box-shadow:0 18px 36px -18px rgba(42,10,18,.45)}
+  .demo-screen{padding:26px 26px 20px;min-height:300px;display:flex;flex-direction:column}
+  .demo-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .demo-badge{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--gold);color:#ffffff;padding:5px 11px;border-radius:999px}
+  .demo-count{font-size:13px;font-weight:700;color:var(--gold-pale)}
+  .demo-kicker{font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-pale);margin-bottom:8px}
+  .demo-title{font-family:"Anton",sans-serif;font-size:clamp(24px,4.6vw,34px);line-height:1.15;font-weight:400;letter-spacing:.01em;color:#ffffff}
+  .demo-caption{margin-top:10px;font-size:16px;line-height:1.55;color:#f3d9d3;max-width:620px}
+  .demo-items{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .demo-items span{font-size:13.5px;font-weight:700;background:rgba(230,0,35,.16);border:1px solid rgba(230,0,35,.55);padding:7px 12px;border-radius:8px;color:#ffd9de}
+  .demo-progress{height:6px;background:rgba(230,0,35,.25)}
+  .demo-progress i{display:block;height:100%;width:0;background:#e60023;transition:width .12s linear}
+  .demo-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 18px;background:rgba(0,0,0,.28)}
+  .demo-btn{background:var(--gold);color:#ffffff;border:none;border-radius:8px;padding:11px 18px;font-family:inherit;font-size:14.5px;font-weight:800;cursor:pointer;min-height:44px}
+  .demo-btn:hover{background:var(--gold-pale);color:#330d16}
+  .demo-btn.ghost{background:transparent;color:#fdf0ea;border:1.5px solid rgba(255,176,188,.55)}
+  .demo-btn.ghost:hover{border-color:var(--gold-pale);color:var(--gold-pale)}
+  .demo-note{font-size:13.5px;color:#d8a49d;margin-left:auto}
+  .demo-chapters{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .demo-chapters button{font-family:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--line-strong);background:var(--paper);color:var(--ink2);border-radius:999px;padding:6px 11px;cursor:pointer}
+  .demo-chapters button:hover{border-color:var(--pumpkin);color:var(--pumpkin)}
+  .demo-chapters button.active{background:var(--pumpkin);border-color:var(--pumpkin);color:#ffffff}
+  @media (max-width:680px){.demo-screen{padding:20px 18px 16px;min-height:320px}.demo-note{margin-left:0;width:100%}}
+
+  /* Closing */
+  .closing{background:var(--ink);color:var(--cream);border-radius:10px;padding:30px 28px;margin-top:44px}
+  .closing .kicker{background:var(--gold);color:#ffffff}
+  .closing h2{font-family:"Anton",sans-serif;font-weight:400;font-size:1.6rem;letter-spacing:.01em;margin-bottom:12px;color:#ffffff}
+  .closing p{color:inherit;opacity:.92;font-size:16px;max-width:620px}
+  .closing .big-line{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:17.5px;border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin:16px 0;opacity:1}
+
+  /* Twin CTA footer */
+  .cta-footer{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .cta-footer a{display:flex;flex-direction:column;gap:2px;text-align:center;text-decoration:none;border-radius:var(--radius);padding:18px 16px;font-weight:800;font-size:16.5px;min-height:56px;justify-content:center}
+  .cta-footer a small{font-weight:500;font-size:13px;opacity:.85}
+  .cta-a{background:linear-gradient(135deg,var(--pumpkin),var(--wine));color:#ffffff;border:1px solid var(--wine)}
+  .cta-a:hover{background:var(--wine-deep)}
+  .cta-b{background:var(--paper);color:var(--ink);border:1.5px solid var(--line-strong)}
+  .cta-b:hover{border-color:var(--ink)}
+  .fineprint{margin-top:22px;text-align:center;font-size:13px;color:var(--muted)}
+
+  @media (max-width:680px){
+    .proof{grid-template-columns:1fr}
+    .rules{grid-template-columns:1fr}
+    .cta-footer{grid-template-columns:1fr}
+    .lesson-body{padding-left:24px}
+    .lesson-head{padding:18px 20px 0}
+    .hero{padding-top:32px}
+  }
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  @media print{
+    .topbar,.download-bar,.demo-controls,.demo-chapters,.complete-row,.cta-footer{display:none !important}
+    body{background:#fff}
+    .lesson,.leavewith,.progress-card,.prompt-card,.homework,.rule,.snags{box-shadow:none;break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <span class="brand">The Pinterest Farm · Student Curriculum</span>
+    <nav>
+      <a href="#farm-demo">Farm Demo</a>
+      <a href="#lessons">Lessons</a>
+      <a href="#prompt">Master Prompt</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#watchouts">Watch Out</a>
+      <a href="#homework">Homework</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="pin-band" aria-hidden="true"></div>
+    <p class="kicker">The Pinterest Farm</p>
+    <h1>Your Step-by-Step Curriculum — Build It As You Learn</h1>
+    <p class="sub">Connect Muse to your Pinterest, set your account up the right way, and run a farm that schedules 10 Pins a day, 30 days ahead — every Pin carrying a keyword title, a board, and a link that leads to money. You don't just read this: you build your farm, lesson by lesson, as you go.</p>
+    <p class="byline">Created by <strong>Glam</strong> · 7 lessons · Work at your own pace — finish each build step before you move on</p>
+  </header>
+
+  <div class="download-bar">
+    <p><strong>Keep this curriculum.</strong> Download a copy to your device so you can work from it anytime — even offline.</p>
+    <button class="download-btn" id="downloadBtn" type="button">⬇ Download this curriculum</button>
+    <span class="download-status" id="downloadStatus" role="status" aria-live="polite"></span>
+  </div>
+
+  <div class="proof">
+    <a href="https://nakeymasi-coder.github.io/pinterest-farm/" target="_blank" rel="noopener">
+      <div class="plabel">See a Real One · The Farm</div>
+      <div class="ptitle">The Pinterest Farm — the live dashboard</div>
+      <div class="pgo">nakeymasi-coder.github.io/pinterest-farm →</div>
+    </a>
+    <a href="#farm-demo">
+      <div class="plabel">Watch · The Farm Demo</div>
+      <div class="ptitle">Inside the Pinterest Farm — demo walkthrough</div>
+      <div class="pgo">Watch the demo ↓</div>
+    </a>
+    <a href="https://nakeymasi-coder.github.io/glam-vault-ad/" target="_blank" rel="noopener">
+      <div class="plabel">See a Real One · The Interactive Pin</div>
+      <div class="ptitle">"Your Next Post? You Decide" — a Pin that plays back</div>
+      <div class="pgo">Tap Visit Site and try it →</div>
+    </a>
+  </div>
+
+  <!-- ============ FARM DEMO VIDEO (WATCH-ONLY) ============ -->
+  <section class="demo-section" id="farm-demo" aria-label="Farm demo video">
+    <div class="sec-head"><h2>Watch First: Inside the Pinterest Farm</h2><span class="sec-note">Press play and watch a demo batch of Pins move through the whole system you're about to build.</span></div>
+    <div class="demo-player">
+      <div class="demo-screen">
+        <div class="demo-top"><span class="demo-badge">Demo Batch · Watch Only</span><span class="demo-count" id="demoCount">1 / 9</span></div>
+        <p class="demo-kicker" id="demoKicker">The Farm, Shown Step by Step</p>
+        <div class="demo-title" id="demoTitle">This is a farm — in demo form</div>
+        <p class="demo-caption" id="demoCaption">Watch one day of Pins move through the exact system behind the Pinterest Farm. You see how it works, step by step — then you build your own farm with the Master Prompt below.</p>
+        <div class="demo-items" id="demoItems"><span>Demo batch — cozy glam theme</span><span>10 Pins, one day</span><span>One pipeline, on repeat</span></div>
+      </div>
+      <div class="demo-progress"><i id="demoBar"></i></div>
+      <div class="demo-controls">
+        <button class="demo-btn" id="demoPlay" type="button" aria-label="Play or pause the farm demo video">❚❚ Pause</button>
+        <button class="demo-btn ghost" id="demoRestart" type="button">↺ Watch again</button>
+        <span class="demo-note">A demo batch only — no real account, Pins, or sales are shown.</span>
+      </div>
+    </div>
+    <div class="demo-chapters" id="demoChapters" aria-label="Demo chapters"></div>
+  </section>
+
+  <div class="leavewith">
+    <h2>What you'll have when you finish</h2>
+    <ol>
+      <li><strong>Muse connected</strong> to your Pinterest — working in the browser, with you watching every move</li>
+      <li>A Pinterest <strong>set up the right way</strong> — business account, a profile that sells, your website claimed, keyword boards</li>
+      <li>Your own <strong>Pinterest Farm</strong>: 5 agents plus your Setup Agent, a Character Vault, a Queue, and Run in Chat</li>
+      <li>A <strong>locked character</strong> who looks like herself in every single Pin</li>
+      <li>A <strong>30-day schedule</strong> — 10 Pins a day, every Pin done right: keyword title, board, and a money link</li>
+    </ol>
+    <p class="needline"><strong>Before you start:</strong> set up a free Pinterest account and a Muse account, and gather the content you already have — your photos, your art, your products, your old posts. We use what you already have first. You'll fill the rest in as you build.</p>
+  </div>
+
+  <div class="progress-card" aria-label="Your progress">
+    <div class="p-row"><h2>Your progress</h2><span class="progress-count" id="progressCount">0 of 7 lessons complete</span></div>
+    <div class="progress-track"><i id="progressBar"></i></div>
+    <p>Work through the lessons in order. When you've finished a lesson's build step, tap <strong>Mark complete</strong> on that lesson and watch your progress grow.</p>
+  </div>
+
+  <!-- ============ LESSONS ============ -->
+  <section class="block" id="lessons">
+    <div class="sec-head"><h2>Your Lessons</h2><span class="sec-note">For each lesson: why it matters, follow along step by step, then build it yourself.</span></div>
+
+    <!-- Lesson 1 -->
+    <article class="lesson" data-lesson>
+      <div class="lesson-head">
+        <div class="stopnum">1</div>
+        <div><h3>Connect Muse to Pinterest + Meet Your Farm</h3><div class="lesson-meta"><span class="chip">Lesson 1</span><span class="chip star">Start here — do this first</span><span class="chip done-chip">✓ Complete</span></div></div>
+      </div>
+      <div class="lesson-body">
+        <div class="row"><span class="tag why">Why This Matters</span>
+          <p>Everything in this farm runs on one connection — and it is not a button. Pinterest has <strong>no connector button</strong> inside Muse. The connection is <strong>Muse's built-in browser</strong>: Muse opens Pinterest in a live browser right inside your chat, <strong>you sign in yourself</strong>, and from then on Muse can audit, clean up, and schedule your Pinterest while you watch. Connect first, and the whole farm can work. Skip it, and nothing can touch your account.</p>
+        </div>
+        <div class="row"><span class="tag follow">Follow Along</span>
+          <ul>
+            <li>Open your farm's <strong>Home tab</strong> and find the card <strong>"Connect Muse to Pinterest — Do This First"</strong> — it sits right above the Setup Agent</li>
+            <li>Copy the <strong>starter prompt</strong> out of that card, word for word — here it is again, exactly as it lives in your farm:
+              <div class="starterbox"><span class="sb-label">Copy-ready starter prompt</span>Act as my Pinterest marketing strategist. Open Pinterest in your browser — I will sign in myself when you show me the login page. Once I say I'm in, audit my profile, my boards, my settings and my analytics, and tell me what needs fixing BEFORE you change anything. My goal is outbound clicks and sales.</div>
+            </li>
+            <li>Paste it into a <strong>new Muse chat</strong> and send it. Muse opens Pinterest in a <strong>browser panel</strong> inside your chat</li>
+            <li>When the login page shows, <strong>tap the browser panel, take control, and sign in yourself</strong> — your password and any code go only into Pinterest's own login page, <strong>never into the chat</strong></li>
+            <li>Hand control back and say <strong>"I'm in."</strong> Muse confirms it can see your account — then it audits <em>before</em> it changes anything</li>
+          </ul>
+        </div>
+        <div class="row"><span class="tag turn">Your Turn — Build It</span>
+          <ul>
+            <li>Paste the starter prompt into your own Muse and <strong>sign in yourself</strong> in the browser panel</li>
+            <li>Say <strong>"I'm in"</strong> and let Muse run your <strong>first audit</strong> — profile, boards, settings, analytics</li>
+            <li>Read the audit list. <strong>Nothing gets fixed until you say yes</strong> — that order never changes</li>
+            <li>Tour your farm while you're here: <strong>Home, Pin Intake Form, Character Vault, Solo Agent Forms, Queue, Run in Chat</strong></li>
+          </ul>
+        </div>
+        <div class="remember"><strong>Remember:</strong> your password and your codes never go in chat — not for Pinterest, not for anything. You sign in inside the browser; Muse does the work after.</div>
+        <div class="complete-row"><button class="complete-btn" type="button" data-complete>Mark complete</button><span class="complete-hint">Tap when you're signed in, your audit is in front of you, and you've toured the farm.</span></div>
+      </div>
+    </article>
+
+    <!-- Lesson 2 -->
+    <article class="lesson" data-lesson>
+      <div class="lesson-head">
+        <div class="stopnum">2</div>
+        <div><h3>Start From Zero — Set Up Pinterest the Right Way</h3><div class="lesson-meta"><span class="chip">Lesson 2</span><span class="chip done-chip">✓ Complete</span></div></div>
+      </div>
+      <div class="lesson-body">
+        <div class="row"><span class="tag why">Why This Matters</span>
+          <p>A farm fed into a messy account wastes every Pin. Your farm carries a built-in coach — <strong>Agent 6, the Pinterest Setup Agent</strong> — whose 7-step "Start From Zero" checklist sets a brand-new or messy account up the right way, in order, before the first real run. Do the setup once and every Pin after it lands on solid ground.</p>
+        </div>
+        <div class="row"><span class="tag follow">Follow Along</span>
+          <ul>
+            <li>On the farm's <strong>Home tab</strong>, open the <strong>Pinterest Setup Agent</strong> card — tap a step to open its plain-language how-to, do it, then check it off. The card remembers your checkmarks</li>
+            <li><strong>Step 1:</strong> create the account and switch it to a <strong>free Business account</strong></li>
+            <li><strong>Step 2:</strong> build a <strong>profile that sells</strong> — clear photo or logo, a keyword-rich bio saying who you help and what you post, and your shop or community link</li>
+            <li><strong>Step 3:</strong> <strong>claim your website</strong>, so your content is credited to you everywhere it travels</li>
+            <li><strong>Step 4:</strong> create your <strong>first 5 boards</strong> with keyword-rich names a buyer would actually search</li>
+            <li><strong>Step 5:</strong> turn on <strong>Rich Pins</strong> and find your <strong>Analytics</strong> — outbound clicks are the scoreboard from day one</li>
+            <li><strong>Step 6:</strong> post your <strong>first Pin the right way</strong> — strong vertical visual, keyword title, description, board, and a destination link</li>
+            <li><strong>Step 7:</strong> set your <strong>weekly rhythm</strong> — batch and schedule ahead instead of posting randomly</li>
+          </ul>
+        </div>
+        <div class="row"><span class="tag turn">Your Turn — Build It</span>
+          <ul>
+            <li>Work the checklist top to bottom until it reads <strong>7 of 7</strong> — hear the farm tell you: <strong>"You're set up — now go feed the farm"</strong></li>
+            <li>Name every board like a <strong>search phrase</strong>, not a diary entry — buyers search "good morning affirmations," not "my faves"</li>
+            <li>Post that first Pin with <strong>all five pieces</strong>: visual, title, description, board, link</li>
+          </ul>
+        </div>
+        <div class="remember"><strong>Remember:</strong> setup is not busywork. A claimed website, keyword boards, and Analytics turned on are what let Pins turn into clicks — and clicks into sales.</div>
+        <div class="complete-row"><button class="complete-btn" type="button" data-complete>Mark complete</button><span class="complete-hint">Tap when your Setup Agent reads 7 of 7 and your first Pin is posted the right way.</span></div>
+      </div>
+    </article>
+
+    <!-- Lesson 3 -->
+    <article class="lesson" data-lesson>
+      <div class="lesson-head">
+        <div class="stopnum">3</div>
+        <div><h3>Lock Your Character in the Vault</h3><div class="lesson-meta"><span class="chip">Lesson 3</span><span class="chip done-chip">✓ Complete</span></div></div>
+      </div>
+      <div class="lesson-body">
+        <div class="row"><span class="tag why">Why This Matters</span>
+          <p>Your audience falls in love with a <em>person</em>, not a random face in every Pin. The Character Vault locks your character with two reference photos, so she is recognizably herself in every image and every video — same face, same body, same energy. The reference photos ARE the lock. No lock, no consistency — and consistency is what turns scrollers into followers.</p>
+        </div>
+        <div class="row"><span class="tag follow">Follow Along</span>
+          <ul>
+            <li>Open the <strong>Character Vault</strong> and add a character — a letter and a name, plus a voice description</li>
+            <li><strong>Slot 1 — Headshot:</strong> one photo, <strong>9:16</strong>. This becomes Reference One in every build</li>
+            <li><strong>Slot 2 — Body Reference Sheet:</strong> <strong>one single 9:16 photo</strong> — not separate photos — with <strong>front, three-quarter, left profile, and right side</strong> views of the same person, same outfit, same background, all on that one photo</li>
+            <li>She is <strong>NOT locked until BOTH slots are filled</strong> — the card says so, and the farm means it</li>
+            <li>Uploads: <strong>JPG or PNG</strong>, as you saved them. A webp gets rejected with a clear message: <strong>"JPG or PNG please"</strong></li>
+          </ul>
+        </div>
+        <div class="row"><span class="tag turn">Your Turn — Build It</span>
+          <ul>
+            <li>Fill <strong>Slot 1</strong> with your character's best 9:16 headshot</li>
+            <li>Build or upload her <strong>Slot 2</strong> single-sheet body reference — four views, one photo</li>
+            <li>Confirm the farm calls her <strong>locked</strong> before you run a single job with her</li>
+          </ul>
+        </div>
+        <div class="remember"><strong>Remember:</strong> your character stays exactly as her reference photos — same face, same body. Plus-size stays plus-size, never slimmed down, and nobody gets swapped mid-run.</div>
+        <div class="complete-row"><button class="complete-btn" type="button" data-complete>Mark complete</button><span class="complete-hint">Tap when both slots are filled and your character shows as locked.</span></div>
+      </div>
+    </article>
+
+    <!-- Lesson 4 -->
+    <article class="lesson" data-lesson>
+      <div class="lesson-head">
+        <div class="stopnum">4</div>
+        <div><h3>Your First Full Farm Run</h3><div class="lesson-meta"><span class="chip">Lesson 4</span><span class="chip star">The heart of this curriculum</span><span class="chip done-chip">✓ Complete</span></div></div>
+      </div>
+      <div class="lesson-body">
+        <div class="row"><span class="tag why">Why This Matters</span>
+          <p>A farm run is the whole pipeline, start to finish: five agents working one job in order, and a finished Pin package landing in chat for your approval. Learn this one flow and you can produce a day of Pins — or a week — without ever starting from a blank screen again.</p>
+          <div class="pipeline"><span>SCOUT</span><i>→</i><span>LOCK THE LOOK</span><i>→</i><span>IMAGE</span><i>→</i><span>STORY + VIDEO</span><i>→</i><span>PIN COPY</span><i>→</i><span>APPROVE</span><i>→</i><span>SCHEDULE</span></div>
+        </div>
+        <div class="row"><span class="tag follow">Follow Along</span>
+          <ul>
+            <li>Play the <strong>Farm Demo</strong> at the top of this page and follow one day of Pins through the pipeline, Scout to Schedule</li>
+            <li>On the <strong>Pin Intake Form</strong>, walk the fields in order: <strong>locked character → Mode → Product Presentation → Topic → Pin format → product → reference link → notes → destination link</strong></li>
+            <li><strong>The 7 Modes</strong> are your 6 proven pillars plus one: Good Morning Affirmations · Cozy Glam Character Looks · Typography &amp; Word Art · Video Pins · Room &amp; Studio Decor Scenes · Creator Business Tips · and <strong>Product Spotlight</strong> for interactive Pins. A mode is a setting — it changes the search, the story, the shots, and the copy</li>
+            <li><strong>Product Presentation</strong> sits right after Mode — one single choice: <strong>Wearing</strong> the product OR <strong>Holding</strong> it. Never both</li>
+            <li>Submit, and your run lands in the <strong>Queue</strong>. Tap <strong>Run in Chat</strong> on it — that sets it to working and opens its Run in Chat card. Tap <strong>Copy Prompt</strong> and paste it into chat with Muse</li>
+            <li>Watch the agents work in order: <strong>Agent 1 Scout</strong> reads Pinterest in guest view (keywords, top boards, trends worked 45 days ahead) · <strong>Agent 2 Image</strong> locks the outfit on your character in chat and builds the reference sheet · <strong>Agent 3 Story</strong> writes hook, shots, and script — scene action only, never a description of her · <strong>Agent 4 Video</strong> builds the video Pin · <strong>Agent 5 Pin Copy</strong> finishes the package</li>
+          </ul>
+        </div>
+        <div class="row"><span class="tag turn">Your Turn — Build It</span>
+          <ul>
+            <li>Fill the intake form for one real Pin — pick your <strong>strongest pillar</strong> and give the Pin a <strong>destination link</strong> before you submit</li>
+            <li>Queue it, <strong>Run in Chat</strong>, paste the copied prompt, and follow the package as it comes back</li>
+            <li>Check the finished package against the standing order: <strong>keyword title, board, destination link</strong> — all three, or it is not done</li>
+          </ul>
+        </div>
+        <h4>New: Scene Sets — one product, four Pins</h4>
+<p>Your Image Agent also runs the <strong>Scene Set workflow</strong>. Flip <strong>Scene Set</strong> on in the Pin Intake form (or in the Image Agent's solo form), give the run <strong>one person reference and one product reference</strong>, and instead of a single image you get a <strong>4-shot creator set</strong> — four standalone images, each on its own canvas, never a grid:</p>
+<ul>
+<li><strong>Hero</strong> — she presents the product, packaging to camera.</li>
+<li><strong>Lifestyle</strong> — a natural moment holding or using it.</li>
+<li><strong>Detail</strong> — a close product view with her still in frame and recognizable.</li>
+<li><strong>Storytelling</strong> — an alternate angle with clean, caption-safe space.</li>
+</ul>
+<p>The locks come first: her face, complexion, hair, body and wardrobe, plus the product's shape, colors and label placement, are locked from your real references — never invented, never slimmed, never swapped. You can add optional references, each with one job only: skin texture, body silhouette, a pose, or wardrobe. Pick up to four scenes (vanity, kitchen, studio, cafe, unboxing tabletop, testimonial, and more) or let the agent choose. Every shot is quality-checked — identity, product fidelity, hands and limbs — and delivered as an <strong>image-and-prompt pair, Shot 01 through Shot 04</strong>, so one product becomes four Pins, or the stills for a video Pin. It shines brightest in <strong>Product Spotlight</strong> mode.</p>
+<div class="remember"><strong>Remember:</strong> the dashboard is your control panel — it does not browse, generate, or post by itself. The work happens in chat, from the Run in Chat prompt, and nothing is ever posted automatically.</div>
+        <div class="complete-row"><button class="complete-btn" type="button" data-complete>Mark complete</button><span class="complete-hint">Tap when your first full run is finished and its Pin package is in front of you.</span></div>
+      </div>
+    </article>
+
+    <!-- Lesson 5 -->
+    <article class="lesson" data-lesson>
+      <div class="lesson-head">
+        <div class="stopnum">5</div>
+        <div><h3>Solo Agents — One Job at a Time</h3><div class="lesson-meta"><span class="chip">Lesson 5</span><span class="chip done-chip">✓ Complete</span></div></div>
+      </div>
+      <div class="lesson-body">
+        <div class="row"><span class="tag why">Why This Matters</span>
+          <p>Sometimes you don't need the whole pipeline — you need one thing: fresh keywords for a pillar, one image fixed, copy for a Pin you already made. Solo forms let you hire a single agent for a single job, with the same rules, the same standing order, and the same approval gate — nothing watered down.</p>
+        </div>
+        <div class="row"><span class="tag follow">Follow Along</span>
+          <ul>
+            <li>Open <strong>Solo Agent Forms</strong> — one form per agent, five in all, each one producing a <strong>clean, ready-to-copy prompt</strong> for that agent's job</li>
+            <li><strong>Solo Scout:</strong> keywords, top boards, and seasonal trends for one pillar — your research run before a batch</li>
+            <li><strong>Solo Pin Copy:</strong> hand it a finished Pin and it returns the full copy package — and it carries the standing order on its own form: <strong>a Pin is not done until it has a keyword title, a board, and a destination link</strong></li>
+            <li>The solo <strong>Story</strong> and solo <strong>Video</strong> forms carry the <strong>Product Presentation</strong> choice too — Wearing or Holding, never both, on every form where it belongs</li>
+            <li>Solo jobs land in the <strong>same Queue</strong>, newest first, and run the same way: Run in Chat, copy, paste, approve</li>
+          </ul>
+        </div>
+        <div class="row"><span class="tag turn">Your Turn — Build It</span>
+          <ul>
+            <li>Run a <strong>solo Scout job</strong> on the pillar you post most — save the keywords it brings back</li>
+            <li>Run a <strong>solo Pin Copy job</strong> on a Pin you already have — compare the new copy package to what is live now</li>
+            <li>Mark each job's status in the Queue as it moves: <strong>queued → working → done</strong></li>
+          </ul>
+        </div>
+        <div class="remember"><strong>Remember:</strong> solo does not mean sloppy. One agent, one job — same rules, same lock, same gate.</div>
+        <div class="complete-row"><button class="complete-btn" type="button" data-complete>Mark complete</button><span class="complete-hint">Tap when one solo Scout job and one solo Pin Copy job are done.</span></div>
+      </div>
+    </article>
+
+    <!-- Lesson 6 -->
+    <article class="lesson" data-lesson>
+      <div class="lesson-head">
+        <div class="stopnum">6</div>
+        <div><h3>The 10-a-Day, 30-Day Scheduling System</h3><div class="lesson-meta"><span class="chip">Lesson 6</span><span class="chip star">The money system</span><span class="chip done-chip">✓ Complete</span></div></div>
+      </div>
+      <div class="lesson-body">
+        <div class="row"><span class="tag why">Why This Matters</span>
+          <p>Random posting starves. A schedule feeds. Ten Pins a day, scheduled 30 days ahead in Pinterest's own scheduler, means your account works every single day — including the days you rest — and every Pin has a month to find its people. This rhythm is the difference between a hobby board and a sales channel.</p>
+        </div>
+        <div class="row"><span class="tag follow">Follow Along</span>
+          <ul>
+            <li>The math: <strong>10 Pins a day × 30 days = 300 Pins a month</strong>, built in <strong>weekly batches</strong> — about 70 to 75 at a time, never 300 in a panic</li>
+            <li>Scheduling happens in <strong>Pinterest's own scheduler</strong> — with Muse connected, Muse can fill it with you watching. Scheduled Pins sit in your <strong>Scheduled list</strong> until their day comes; scheduling is not posting</li>
+            <li>Two scheduler facts to respect: times land <strong>only on the hour and the half hour</strong>, and the calendar reaches <strong>about 30 days out</strong> — the last days unlock as the window rolls</li>
+            <li>Feed the batches from <strong>what you already have first</strong> — your photos, your art, your past posts, reissued as fresh Pins with keyword titles and real links. Create new only when a slot truly has nothing</li>
+            <li>Your Scout works <strong>45 days ahead of the season</strong>, so holiday content is scheduled and warming up long before the holiday arrives</li>
+          </ul>
+        </div>
+        <div class="row"><span class="tag turn">Your Turn — Build It</span>
+          <ul>
+            <li>Map your <strong>first 7 days</strong>: 10 slots a day across your pillars — affirmations, looks, word art, decor, tips, spotlight</li>
+            <li>Fill the week from your <strong>existing content first</strong>; list only the real gaps as "create"</li>
+            <li>Schedule the whole week in <strong>Pinterest's scheduler</strong>, on :00 and :30 times, and confirm the count in your Scheduled list</li>
+          </ul>
+        </div>
+        <div class="remember"><strong>Remember:</strong> consistency beats intensity. Ten a day, every day, a month ahead — that is the system. One heroic weekend is not.</div>
+        <div class="complete-row"><button class="complete-btn" type="button" data-complete>Mark complete</button><span class="complete-hint">Tap when your first 7 days — 70 Pins — are scheduled and counted.</span></div>
+      </div>
+    </article>
+
+    <!-- Lesson 7 -->
+    <article class="lesson" data-lesson>
+      <div class="lesson-head">
+        <div class="stopnum">7</div>
+        <div><h3>Clicks &amp; Sales — Links, Winners, and the Weekly Scoreboard</h3><div class="lesson-meta"><span class="chip">Lesson 7</span><span class="chip done-chip">✓ Complete</span></div></div>
+      </div>
+      <div class="lesson-body">
+        <div class="row"><span class="tag why">Why This Matters</span>
+          <p>Saves are cute. <strong>Clicks pay.</strong> A beautiful Pin with no destination link is a dead end — pretty, and profit-free. Every Pin in this system carries a link to a product page, a shop, an interactive page, or a community — and every week you read one number, <strong>outbound clicks</strong>, to decide what gets made next. That scoreboard is how a farm becomes a business.</p>
+        </div>
+        <div class="row"><span class="tag follow">Follow Along</span>
+          <ul>
+            <li>The standing order, one more time, because it is the whole game: <strong>a Pin is not done until it has a keyword title, a board, and a destination link</strong></li>
+            <li><strong>Product Spotlight Pins</strong> show the money path at its best: the Pin invites a tap, the destination is an <strong>interactive page</strong> people play with first — then they join or buy. Play first, purchase second</li>
+            <li>In <strong>Analytics</strong>, sort by <strong>outbound clicks</strong>, not impressions. Your proven winners get <strong>recreated</strong> — fresh versions of the concepts that already earned clicks. The Pins nobody clicks get retired, not repeated</li>
+            <li>Check every destination link like money depends on it — because it does. A <strong>broken link on a live Pin cannot be edited</strong>; get it right before the Pin ever goes out</li>
+            <li>No price, discount, or sale claim in any Pin copy <strong>unless a live price was actually verified</strong> — prices live on the product page</li>
+          </ul>
+        </div>
+        <div class="row"><span class="tag turn">Your Turn — Build It</span>
+          <ul>
+            <li>Open Analytics and name your <strong>top 3 Pins by outbound clicks</strong> — those are your winner concepts</li>
+            <li>Queue <strong>one recreation of each winner</strong> — same concept, fresh Pin, keyword title, working link</li>
+            <li>Put a <strong>weekly scoreboard check</strong> on your calendar: outbound clicks this week vs. last — one number, every week, no skipping</li>
+          </ul>
+        </div>
+        <div class="remember"><strong>Remember:</strong> you didn't build a posting habit — you built a click system. Feed the winners, retire the rest, and let the scoreboard make the decisions.</div>
+        <div class="complete-row"><button class="complete-btn" type="button" data-complete>Mark complete</button><span class="complete-hint">Tap when your winners are named, their recreations are queued, and your weekly check is on the calendar.</span></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ MASTER PROMPT ============ -->
+  <section class="block" id="prompt">
+    <div class="sec-head"><h2>The Master Prompt</h2><span class="sec-note">This is the exact prompt that builds your Pinterest Farm dashboard. Keep it — it is the farm's DNA.</span></div>
+    <div class="prompt-card">
+      <h3>Your Pinterest Farm, in one paste</h3>
+      <p>This prompt builds your whole farm: the 5 agents plus the Setup Agent, the Character Vault lock, the 7 modes, the Queue and Run in Chat, the Connect Muse to Pinterest card, and the standing order baked into every run — with your approval as the gate at every step. If you ever need to rebuild your farm, paste this into Muse and it comes back exactly like this.</p>
+      <button class="copy-btn" id="copyBtn" type="button">Copy the Build Prompt</button>
+      <span id="copyStatus" style="margin-left:12px;font-size:14px;font-weight:600;color:var(--good)" role="status" aria-live="polite"></span>
+      <details class="prompt-view">
+        <summary>Read the full prompt before you copy it</summary>
+        <pre id="masterPrompt">PINTEREST FARM - THE ADAPTED BUILD PROMPT (Glam's Pinterest edition of the UGC Agent Farm)
+Built from THE AGENT FARM BUILD PROMPT (the master farm prompt by Glam, Glam Hustle Hub),
+adapted for Pinterest the same way the Facebook and Instagram farms were adapted.
+Keep the bones. Change only what Pinterest genuinely changes.
+================================================================================
+Use this prompt to build / rebuild the dashboard. Where it conflicts with any
+default, THIS prompt wins.
+
+THE DASHBOARD
+Build a working PINTEREST FARM dashboard - a real tool I can use, not a
+document, not a lesson, not an explanation of one. Build it as ONE
+self-contained interactive page (HTML) that runs when opened. If you cannot
+make a file, output the complete code for that page so I can save and open it.
+Do NOT stop at a plan or an outline - build the finished, working dashboard.
+
+WHAT THIS FARM IS
+One dashboard holds my Pin Intake Form, a Character Vault for my locked
+characters, solo forms for each of my 5 agents, and a Queue for my runs. The
+farm's job is to produce PINTEREST PINS for my account @PromptLikeGlam and my
+digital products: the Glam Prompt Vault, my prompt generators, my affirmation
+art, and my planners. After I submit a run, my AI runs the farm WITH me in
+chat - Pinterest scout, locked character, story, image or video pin, pin
+copy - and brings the finished pin package back for my approval. NOTHING is
+ever posted automatically. Say that plainly inside the dashboard: the
+dashboard itself is my control panel (intake, vault, queue); it does not
+browse Pinterest, generate images, make videos, or post pins by itself - the
+work happens in chat from the Run in Chat prompts.
+
+DESIGN
+Clean, pretty, phone-first. The dashboard lives in a Pinterest world: deep
+Pinterest red and burgundy, pearl white glass panels, chrome silver accents,
+a slow animated red ambient background with faint floating pin shapes, and
+small butterfly touches. A full-screen PORTAL ENTRANCE opens first: the
+portal-intro.mp4 red spiral tunnel video (kept in the same folder) plays
+full-bleed behind the title PINTEREST FARM in huge glowing white letters,
+the tagline "Where Pins Turn Into Sales", and one pearl-white Enter the
+Farm button; tapping it zooms and fades through the portal into the
+dashboard. The gate shows on every fresh load (it is never suppressed by
+localStorage) and the page stays fully usable if the video file is missing.
+Cards carry real 3D depth - layered shadows, glassy panels, and a gentle
+pointer tilt on desktop. Big readable text, big tap-friendly buttons.
+Everything that relates to video or character references is 9:16 vertical.
+START EMPTY: no test characters, no test runs, no sample rows anywhere.
+I add my real characters and runs myself. The dashboard saves in the
+browser with localStorage key pinterestFarmV1.
+
+PAGES THE DASHBOARD MUST HAVE
+HOME: explains the farm, the agents (the 5 run agents plus the Pinterest
+Setup Agent), the 7 modes, the Product Presentation rule, the Pin standing
+order, and how Run in Chat works. The Pinterest Setup Agent's interactive
+7-step Start From Zero checklist lives on Home; its checkmarks save inside
+the same pinterestFarmV1 store under the setupProgress key.
+PIN INTAKE FORM: the full farm run form (fields below, in order).
+CHARACTER VAULT: locked characters (Character A, B, C...), each reusable as
+that same character.
+SOLO AGENT FORMS: one form per agent, so I can run a single agent job by
+itself.
+QUEUE: every full run and solo job in one list, newest first, with a manual
+status I can set: queued, working, or done. The status button only changes
+the label - it never executes anything. Execution happens in chat.
+RUN IN CHAT: the card a Queue run opens into (see RUN IN CHAT below).
+
+PIN INTAKE FORM - fields in this exact order:
+1. Locked character picker (or "create a new character")
+2. Mode (the 7 modes below)
+3. PRODUCT PRESENTATION - right after Mode, one single choice: Wearing the
+   product OR Holding the product. Never both.
+4. Topic
+5. Pin format / video length (for example: a still pin, an idea pin, or a
+   30 second video pin)
+6. Product name and product link, when there is one
+7. Reference link, when there is one (a pin, a board, or a video to learn from)
+8. Notes
+9. Destination link for this Pin (where the Pin sends people when they tap
+   it - a product page, an interactive page, a shop, or a community page)
+Save that one Product Presentation choice on the run. Show it on the Queue
+card and on the Run in Chat card, with its exact prompt sentence (from THE
+SCENE PROMPT SHAPE below). Show the destination link on the Queue card and
+the Run in Chat card too, and bake it into the copied prompt.
+
+CHARACTER VAULT - one record per locked character:
+- Character letter and name (for example "Character A - Rosa"), plus a voice
+  description.
+- SLOT 1 - HEADSHOT: one photo, 9:16.
+- SLOT 2 - BODY REFERENCE SHEET: ONE single 9:16 photo - not separate
+  photos - with front, three-quarter, left profile, and right side views of
+  the same person, same outfit, same background, all on that one photo.
+- A character is NOT locked until BOTH slots are filled. Say so on the card.
+- I can upload a character I already have: headshot for Slot 1, single 9:16
+  body reference sheet for Slot 2. My uploads are accepted as JPG or PNG, as
+  I saved them. Never force my uploads to PNG. If I upload a webp, reject it
+  with a clear message: "JPG or PNG please."
+- My characters are ultra realistic, with real skin texture and real hair
+  texture. Every character is African American unless I named a specific
+  existing character. Plus-size stays plus-size, never slimmed down.
+- Within one video, identity, clothing, location, and lighting stay frozen
+  from the reference photos.
+
+THE 5 AGENTS - in this order:
+AGENT 1 - PINTEREST SCOUT: scouts Pinterest itself in guest view (no
+sign-in) for what is winning in the chosen mode (content pillar): the search
+terms and keywords people are using, the top boards in the pillar, and the
+seasonal trends - worked 45 days ahead of the season. When the run needs a
+character look, it also picks the outfit or product reference on Pinterest,
+especially products with an Amazon link, and copies its picture. Does not
+check price or availability at this step.
+AGENT 2 - IMAGE AGENT: creates the person and avatar images in chat -
+character references, the outfit photo (my locked character wearing the
+exact Pinterest outfit), and the outfit reference sheet. All ultra
+realistic, real skin and hair texture, all PNG, all 9:16.
+SCENE SET WORKFLOW (runs inside AGENT 2 - IMAGE AGENT, when a run's
+Scene Set is on): transform ONE person reference plus ONE product
+reference into FOUR distinct, premium, believable creator-style images,
+each on its own independent canvas - stills ready to post as four
+separate Pins or to carry into a video Pin. The four shots are planned
+as one set: 1) HERO - the creator presents the product, recognizable
+packaging facing camera. 2) LIFESTYLE - a natural moment holding or
+using the product. 3) DETAIL - a close product view with the same
+creator still visible and recognizable where framing permits.
+4) STORYTELLING - an alternate action or angle with unobtrusive
+caption-safe negative space.
+1. CONFIRM AND INSPECT REFERENCES. Require an actual person image and
+an actual product image; identify which upload serves each role and
+request only a missing or unusable one - never invent a replacement
+face or product. Build a compact identity checklist from visible
+details (facial features, complexion, hairstyle, body proportions,
+distinguishing traits, reference wardrobe) and a product checklist
+(category, silhouette, geometry, packaging structure, colors, label
+placement, plausible scale). Do not invent label copy, certifications,
+features, testimonials, or performance claims; ask for a clearer label
+reference when exact unreadable copy is essential.
+2. OPTIONAL REFERENCES, ONE JOB EACH. Accept (never require) a skin
+close-up (microtexture and finish only - not another person's
+complexion or marks), a body/full-body reference (silhouette, build,
+proportions, posture, fit - never its face), a pose reference, and
+wardrobe images. Preserve the primary person's complexion, facial
+features and existing body proportions unless I explicitly choose a
+body reference or describe a change - never automatically slim,
+enlarge, lengthen, or idealize. Ask one focused question only if
+conflicting references make identity or body unclear.
+3. REALISM STANDARD. Believable photographic realism: subtle pores at
+viewing distance, fine facial hairs when visible, gentle tonal
+variation, natural lip texture, softly defined under-eye detail,
+knuckle creases, realistic nail beds, physically coherent highlights.
+Preserve visible freckles, scars, stretch marks, or other defining
+details the references support; do not invent or exaggerate
+imperfections. Show natural soft-tissue compression, weight
+distribution, joint placement, fabric tension, and contact shadows.
+Avoid airbrushed waxy skin, doll-like faces, plastic highlights,
+exaggerated curves, repeated hair strands, fake HDR, warped anatomy,
+and excessive sharpening. Make lighting and camera choices concrete:
+light direction, softness, color, shadow behavior, camera height,
+perspective, focal-length look (plausible 35-50mm lifestyle or 70-85mm
+portrait), depth of field, focus priority. Keep product labels and
+facial detail legible rather than using extreme blur.
+4. DIRECTION AND SCENES. All creative controls are optional - never
+block production to ask about unspecified preferences. Defaults:
+natural creator lifestyle setting appropriate to product use;
+reference outfit and appearance; soft believable daylight; the farm's
+Pin format (tall 2:3, or 9:16 when the set feeds a video Pin); natural,
+plausible, commercially polished mood, pose, camera and props. Scene
+choices: home / living room, kitchen / meal prep, bathroom / skincare
+vanity, bedroom / getting ready, home office / desk, professional
+studio, cafe / coffee shop, retail / shopping aisle, gym / fitness,
+outdoor park / garden, city street / walking, travel / hotel /
+airport, unboxing / tabletop, product demonstration / hands-on,
+testimonial / talking-to-camera, beauty / fashion editorial - plus
+custom locations. Preserve my direction text verbatim; do not read
+direction text as a request for visible lettering unless I explicitly
+ask for lettering. Scene allocation: no scene picked - choose one
+believable environment and vary the four compositions; one scene -
+four distinct compositions in it; two scenes - two images each; three
+scenes - each once, repeat the first; four scenes - one each; more
+than four - the first four in my order, and say briefly which were
+used. Never merge scenes into one image or generate extra images.
+5. GENERATE INDIVIDUALLY. Supply BOTH original references on every
+generation. Exactly one final composition per generation, four final
+outputs total - never a grid, collage, contact sheet, split screen, or
+multiple scenes on one canvas. Every generation prompt carries the
+identity checklist, the product checklist, the shot's scene and
+interaction, applicable exact instructions, format, lighting, and the
+single-canvas constraint. Keep reference labels where visible; no
+added logos, decorative text, captions, watermarks, fabricated
+packaging, or unrelated products. Backgrounds stay opaque unless I ask
+for transparency. If generation is unavailable, deliver four numbered
+copy-ready prompts instead - each fully standalone (both references,
+locks, scene, composition, interaction, lighting, styling, format,
+directions, constraints - never "same as above") - and say plainly
+they are prompts. If generation fails partway, name the incomplete
+outputs and offer prompts for those without claiming a complete set.
+6. INSPECT AND DELIVER. Check every output: recognizable person,
+consistent across the four; product shape, color, structure, label
+fidelity, plausible size; natural hands, limbs, grip, contact points,
+shadows, perspective; distinct compositions and selected-scene
+coverage; correct format; balanced crop, clear product focus, caption
+room, realistic texture, commercial polish. Regenerate visibly failing
+shots when supported; never claim exact identity or label accuracy
+that cannot be confirmed, and disclose material unresolved issues
+briefly. Deliver four image-and-prompt pairs in shot order - Image 01
++ Prompt 01 through Image 04 + Prompt 04 - each prompt the FINAL
+version after any refinement, standing alone: every reference's role,
+identity and complexion locks, body and skin-texture instructions,
+wardrobe, scene and action, shot size, camera angle and lens look,
+light direction and shadow quality, environmental and material
+textures, product scale, label and grip, composition and caption-safe
+space, format, applicable exact instructions, and negative
+constraints. Describe only features actually observed in the
+references. Later revisions update the one named image and preserve
+the set's locks rather than recreating all four. Never represent
+generated scenes as documentary evidence of a real endorsement; add no
+unverified results or testimonials.
+AGENT 3 - STORY AGENT: writes the hook, the shots, and the script for video
+pins and multi-frame pins. Labels every scene with the run's one Product
+Presentation choice. Writes scene ACTION only for video prompts - never a
+description of the character.
+AGENT 4 - VIDEO AGENT: makes the video pin in chat with my AI video tool,
+using the Consistent Character workflow below. Returns the finished video
+in chat for my approval. Never posts it.
+AGENT 5 - PIN COPY AGENT: writes the Pin copy package. The Pin TITLE,
+keyword-rich so Pinterest search can find it. The full Pin DESCRIPTION,
+keyword-rich, warm and plain-spoken, ending with what to tap. The BOARD
+pick, from my real boards (list below). 3 to 5 keyword tags. And the
+DESTINATION LINK for the Pin. No price, discount, or sale claim unless a
+live price was actually verified.
+CONNECT MUSE TO PINTEREST (a Home page card titled "Connect Muse to
+Pinterest — Do This First", placed above the Setup Agent card): teach the
+reader that Pinterest has NO connector button inside Muse; the
+connection is Muse's built-in browser. Steps: (1) paste the starter
+prompt (below) into a Muse chat; (2) Muse opens Pinterest in a live
+browser panel inside the chat; (3) the READER signs in themselves in that
+browser panel — password and any code go only into Pinterest's own login
+page, NEVER into chat; (4) the reader hands control back and says "I'm
+in"; (5) the reader stays the boss — they can watch every click, and
+Muse asks before anything is published; scheduling is not posting.
+Starter prompt, shown in a copy-ready box, EXACT: "Act as my Pinterest
+marketing strategist. Open Pinterest in your browser — I will sign in
+myself when you show me the login page. Once I say I'm in, audit my
+profile, my boards, my settings and my analytics, and tell me what needs
+fixing BEFORE you change anything. My goal is outbound clicks and sales."
+Then a short list of what Muse can do once connected: audit profile,
+boards and analytics; clean up settings and boards with the reader's OK;
+claim a website; schedule Pins in Pinterest's own scheduler up to 30
+days ahead (times land on the hour and half hour); check every Pin has a
+keyword title, a board, and a working destination link; re-check clicks
+weekly. Close with the safety note: the dashboard stores nothing about
+the reader's Pinterest account, and signing out in that browser ends the
+connection.
+AGENT 6 - PINTEREST SETUP AGENT (the coach - not a run agent, no solo form,
+and not part of a farm run): a beginner setup coach, "Start From Zero." An
+interactive 7-step checklist on the Home page; each step expands with
+plain-language guidance written for a total beginner: (1) create the
+account and switch it to a free Business account; (2) build a profile that
+sells - clear photo or logo, keyword-rich bio saying who you help and what
+you post, and a shop or community link; (3) claim your website so your
+content is credited to you; (4) create your first 5 boards with
+keyword-rich names a buyer would search; (5) turn on Rich Pins and find
+your Analytics - outbound clicks are the scoreboard; (6) post your first
+Pin the right way - strong vertical visual, keyword title, description,
+board, and a destination link; (7) set your weekly rhythm - batch and
+schedule ahead instead of posting randomly. Each step has a checkbox; the
+x-of-7 progress and progress bar persist inside the same pinterestFarmV1
+store under setupProgress, without changing the characters/runs shape. At
+7 of 7 it shows the completion state: "You're set up - now go feed the
+farm."
+STANDING ORDER, baked into every run prompt and the solo Pin Copy form:
+"A Pin is not done until it has a keyword title, a board, and a destination
+link."
+
+MY BOARDS (the Pin Copy Agent picks from these):
+- Good Morning Affirmations
+- Prompt Generators
+- AI Prompts &amp; Creative Tools
+- Holiday Glam &amp; Cozy Vibes
+- Inspiring Quotes &amp; Healing Words
+- Christian Women Motivation
+- Word Of The Day
+- Content Creator Freebies
+- Seasonal Event Graphic Design Board
+- Typography Art &amp; Word Design Ideas (planned board - say so when picked)
+
+THE 7 MODES (a mode is a setting, not a separate farm - it changes the
+Pinterest search, the story structure, the shots, and the pin copy). These
+are my 6 analytics-proven content pillars plus product spotlight:
+1. Good Morning Affirmations - my proven winner pillar. Warm morning
+   affirmation art and words, made to be saved and shared.
+2. Cozy Glam Character Looks - cozy, glamorous character looks and outfits,
+   the pillar my audience saves for style and mood.
+3. Typography &amp; Word Art - lettering-led pins: word art, typography styles,
+   and quote treatments.
+4. Video Pins - the pillar for moving pins: short vertical video pins built
+   with the Video Agent.
+5. Room &amp; Studio Decor Scenes - rooms, studios, and pretty spaces my
+   audience loves to save.
+6. Creator Business Tips - plain-spoken tips for creators and small
+   business owners, from what is working in my business.
+7. Product Spotlight (Interactive Pins) - a pin whose destination link
+   takes people to an interactive product page or demo, the way my Glam
+   Prompt Vault interactive pin works: play first, then join or buy.
+
+SOLO AGENT FORMS: one per agent. The solo Story Agent form and the solo
+Video Agent form must also include the Product Presentation choice (Wearing
+or Holding). Every solo form produces a clean, ready-to-copy prompt for that
+agent job, prefilled from what I entered.
+
+QUEUE: full runs and solo jobs together, newest first. Each card shows:
+character, mode, the Product Presentation choice AND its exact prompt
+sentence, topic, pin format / video length, product, destination link, and
+status (queued / working / done - manual buttons).
+
+RUN IN CHAT: every Queue card gets a Run in Chat button. Pressing it sets
+that run to "working" and opens a Run in Chat card showing: the locked
+character; Slot 1 and Slot 2 status with thumbnails when uploaded; voice;
+mode; Product Presentation choice and its exact prompt sentence; topic; pin
+format / video length; product name and link; reference link when present;
+notes; and the destination link for this Pin. The card has a COPY PROMPT
+button: the copied prompt tells the AI to run THAT exact run with THOSE
+exact details, nothing swapped, following the workflow and standing rules
+below. There is no scheduled pickup. Do not build one.
+
+THE WORKFLOW (write this into the dashboard and into every run prompt):
+1. Scout Pinterest in guest view for this pillar: search terms and
+   keywords, top boards, and seasonal trends worked 45 days ahead. When
+   the run needs a character look, pick the outfit on Pinterest (one with
+   an Amazon link when there is a product). Copy its picture.
+2. Lock the outfit IN CHAT, not in the video tool: using my locked
+   character's reference photos, put that character in that exact outfit
+   in chat first. Check face match and outfit match.
+3. Make the outfit reference sheet IN CHAT: from the approved outfit photo,
+   one single 9:16 sheet with front, profile, and three-quarter shots of
+   her in that outfit, all on the same photo. Save as PNG.
+4. Build the pin asset with the Consistent Character lock: Reference One
+   is her headshot (Slot 1). Reference Two is the chat-made outfit
+   reference sheet. NEVER leave Reference Two empty. No character bible is
+   needed - the reference photos ARE the lock. Do not paste descriptions of
+   her into scene prompts.
+5. Create the scenes from that lock, in script order, 9:16.
+6. The Pin Copy Agent finishes the package: keyword-rich Pin title, full
+   Pin description, board pick from my board list, 3 to 5 keyword tags,
+   and the destination link.
+7. Return the finished pin package IN CHAT for my approval. Never post,
+   publish, or share it.
+
+THE SCENE PROMPT SHAPE - use this for every scene, and nothing else about her:
+"Use the reference images and keep the character perfectly consistent. [Scene action only.] [Spoken line, if any.] Wearing the product, not holding it."
+For a Holding run, the last sentence swaps to: "Holding the product, not wearing it."
+NEVER describe her in a scene prompt - no face, hair, skin, body, or outfit
+description. Describing her overrides the references and creates a different
+girl.
+
+PRODUCT PRESENTATION - either/or, never both:
+A Wearing run: every prompt ends "wearing the product, not holding it."
+A Holding run: every prompt ends "holding the product, not wearing it."
+Never show her wearing an outfit while holding that same outfit on a
+hanger. Reject and regenerate any image that shows both. If a video needs
+both, use separate scenes - holding first, wearing later - never the same
+shot.
+
+STANDING RULES:
+- Every image my AI creates is PNG, never webp. My own uploaded Vault
+  photos stay as I saved them (JPG or PNG).
+- Nothing is posted automatically, ever. Posting always needs my separate
+  approval.
+- No price, discount, or sale claim in any caption or copy unless a live
+  price was actually verified.
+- A Pin is not done until it has a keyword title, a board, and a
+  destination link.
+- Voice and copy everywhere: personable, human, plain words. No em dashes -
+  use hyphens instead.
+
+FOOTER (twin buttons, like the Prompt Vault Farm):
+Join button: "Join The Glam Vault" linking to https://glamhustlehub.com/products/the-glam-vault
+Shop button: "Shop Glam Hustle Hub" linking to https://glamhustlehub.com
+Footer also states plainly that the dashboard is a control panel only, that
+it does not browse, generate, or post by itself, and that nothing is ever
+posted automatically.
+
+ACCEPTANCE CHECKLIST - the build is not done until ALL of these are true:
+One dashboard with Home, Pin Intake Form, Character Vault, Solo Agent Forms,
+Queue, and Run in Chat - in my colors, starting completely empty. 5 solo
+agent forms. The intake form puts Product Presentation right after Mode,
+and the solo Story and solo Video forms carry it too. The Vault enforces
+Slot 1 headshot + Slot 2 single 9:16 body reference sheet before a character
+counts as locked, accepts JPG or PNG uploads, and rejects webp with
+"JPG or PNG please." Queue cards and Run in Chat cards show the Product
+Presentation choice and its exact prompt sentence, the destination link,
+and have that sentence and link baked into the copied prompts. Run in Chat
+sets the run to working, shows slot thumbnails and status, and copies a
+complete run prompt. Pin Copy standing order ("A Pin is not done until it
+has a keyword title, a board, and a destination link") is written into the
+dashboard and into the copied prompts. All workflows are written into the
+dashboard and the agent prompts: Pinterest guest view scouting (keywords,
+top boards, 45-day seasonal lead, outfit pick), outfit lock in chat, outfit
+sheet in chat as PNG, Consistent Character references (headshot + outfit
+sheet, never empty), no character description in scene prompts, wearing OR
+holding never both. The dashboard states plainly that it does not execute
+the work by itself and that nothing is auto-posted. The portal entrance
+(portal-intro.mp4, same folder) shows on every fresh load, dismisses
+through to the dashboard, and the page works without the video file. The
+Pinterest Setup Agent checklist persists under setupProgress inside
+pinterestFarmV1, alongside the untouched characters/runs shape. No em
+dashes anywhere.
+
+Build it exactly like this. If a rule above conflicts with a default you
+would normally use, this prompt wins.
+</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ CHECKLIST ============ -->
+  <section class="block" id="checklist">
+    <div class="sec-head"><h2>Your Checklist</h2><span class="sec-note">The one-pager — every box done means your farm is running.</span></div>
+    <ul class="checklist">
+      <li><span class="box"></span><span><strong>Muse connected to Pinterest</strong> — you signed in yourself, in the browser panel</span></li>
+      <li><span class="box"></span><span><strong>First audit read</strong> — and nothing changed before your yes</span></li>
+      <li><span class="box"></span><span><strong>Setup Agent 7 of 7:</strong> business account, profile that sells, website claimed</span></li>
+      <li><span class="box"></span><span><strong>First 5 keyword boards created</strong> — named like search phrases</span></li>
+      <li><span class="box"></span><span><strong>Character locked:</strong> Slot 1 headshot + Slot 2 body sheet, JPG or PNG</span></li>
+      <li><span class="box"></span><span><strong>Product Presentation chosen</strong> on every run — Wearing OR Holding, never both</span></li>
+      <li><span class="box"></span><span><strong>First full farm run done</strong> — Queue → Run in Chat → package approved</span></li>
+      <li><span class="box"></span><span><strong>Every Pin package checked:</strong> keyword title, board, destination link</span></li>
+      <li><span class="box"></span><span><strong>First 7 days scheduled</strong> — 10 a day in Pinterest's own scheduler</span></li>
+      <li><span class="box"></span><span><strong>Weekly clicks check on the calendar</strong> — outbound clicks are the scoreboard</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ WATCH OUT FOR THIS ============ -->
+  <section class="block" id="watchouts">
+    <div class="sec-head"><h2>Watch Out For This</h2><span class="sec-note">Real snags from a real build — know them now and save yourself the hour they cost.</span></div>
+    <div class="snags">
+      <h3>Before you hit a wall</h3>
+      <p>Every one of these came up while this exact system was being built and run on a live account. Here's what to watch for — and the way through each one.</p>
+      <ul>
+        <li><strong>Hunting for a connector that doesn't exist:</strong> there is <strong>no Pinterest connector</strong> in Muse's Settings, so don't burn an hour looking for one. The browser <em>is</em> the connection — Lesson 1 is the whole setup.</li>
+        <li><strong>Passwords and codes:</strong> they go <strong>only</strong> into Pinterest's login page inside the browser panel. If Muse ever seems to need one in chat, stop — that's not how this works, ever.</li>
+        <li><strong>Scheduler times:</strong> Pinterest's scheduler only offers <strong>on-the-hour and half-hour</strong> times. There is no 7:15. Plan your day on :00s and :30s and you'll never fight the dropdown.</li>
+        <li><strong>The 30-day wall:</strong> the scheduler only reaches <strong>about 30 days out</strong>. Your last day or two unlocks as the window rolls forward — check back and slot them in when they open instead of forcing them early.</li>
+        <li><strong>A wrong link on a scheduled Pin:</strong> a scheduled Pin's link <strong>cannot be edited</strong>. The fix is to delete that one scheduled Pin and re-schedule it with the right link — so read every destination link twice <em>before</em> you schedule.</li>
+        <li><strong>A wrong link on a live Pin:</strong> a published Pin's link is locked for good. If the link is dead, remake the Pin with a working link and retire the old one. Winners with working links stay untouched.</li>
+        <li><strong>Webp in the Vault:</strong> the Character Vault takes <strong>JPG or PNG</strong> only. If your photo is a webp, you'll get "JPG or PNG please" — convert it and upload again.</li>
+        <li><strong>Describing her in a scene prompt:</strong> never do it. Describing the character overrides her reference photos and creates a different girl. Scene prompts carry action only — the references are the lock.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ RULES ============ -->
+  <section class="block" id="rulebook">
+    <div class="sec-head"><h2>The Rules That Protect Your Pinterest</h2><span class="sec-note">The rules that never change, no matter how fast your farm runs.</span></div>
+    <div class="rules">
+      <div class="rule"><div class="rnum">Rule 1</div><h3>The standing order</h3><p>A Pin is not done until it has a keyword title, a board, and a destination link. No exceptions, no "post it now, link it later."</p></div>
+      <div class="rule"><div class="rnum">Rule 2</div><h3>Your approval is the gate</h3><p>Nothing is posted automatically, ever. The farm brings finished packages to chat; posting always needs your separate yes.</p></div>
+      <div class="rule"><div class="rnum">Rule 3</div><h3>Existing content first</h3><p>Feed the farm what you already have — photos, art, past posts — reissued fresh. Create new only when a slot truly has nothing.</p></div>
+      <div class="rule"><div class="rnum">Rule 4</div><h3>Recreate winners, retire losers</h3><p>Your proven Pins earn fresh recreations. Pins nobody clicks get retired, not repeated. The scoreboard decides.</p></div>
+      <div class="rule"><div class="rnum">Rule 5</div><h3>No unverified price claims</h3><p>No price, discount, or sale claim in any Pin copy unless a live price was actually verified. Prices live on the product page.</p></div>
+      <div class="rule"><div class="rnum">Rule 6</div><h3>The lock is the lock</h3><p>Scene prompts carry action only — never a description of her. And a product is Wearing or Holding, never both in the same shot.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="block" id="homework">
+    <div class="sec-head"><h2>Your Homework</h2><span class="sec-note">Keep going — work the pipeline once, end to end, with your first week.</span></div>
+    <div class="homework">
+      <p style="color:var(--ink2)">Bring proof, not plans:</p>
+      <ol>
+        <li><strong>Finish the checklist</strong> above — connected, audited, set up, locked, scheduled.</li>
+        <li><strong>Connect Muse</strong> with the starter prompt and read your full audit before approving a single fix.</li>
+        <li><strong>Complete the Setup Agent</strong> — 7 of 7, first Pin posted the right way.</li>
+        <li><strong>Lock one character</strong> — both slots filled, JPG or PNG, and the farm calling her locked.</li>
+        <li><strong>Run one full farm run and one solo job</strong> — and check every package against the standing order.</li>
+        <li><strong>Schedule your first week</strong> — 10 a day, on the hour and half hour, every Pin linked — then put the weekly clicks check on your calendar.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <div class="closing">
+    <p class="kicker">You Did It</p>
+    <h2>Now go run your farm</h2>
+    <p>You connected Muse, set your Pinterest up the right way, locked your character, and built a system that schedules a month of money-linked Pins ahead of time — with you as the creative director and the gate. Keep this curriculum and the Master Prompt close — they're yours to work from, batch after batch.</p>
+    <p class="big-line">"You didn't build a posting habit. You built a system that makes Pins that sell. Now go run your farm."</p>
+    <p>Want to go deeper with Glam? This curriculum and the full Pinterest Farm system live inside <strong>The Glam Vault</strong>.</p>
+  </div>
+
+  <!-- ============ TWIN CTA FOOTER ============ -->
+  <div class="cta-footer">
+    <a class="cta-a" href="https://glamhustlehub.com/products/the-glam-vault" target="_blank" rel="noopener">Join The Glam Vault<small>This curriculum and the full Pinterest Farm system live inside</small></a>
+    <a class="cta-b" href="https://glamhustlehub.com" target="_blank" rel="noopener">Shop Glam Hustle Hub<small>Prompts, planners, and creator tools by Glam</small></a>
+  </div>
+  <p class="fineprint">The Pinterest Farm · Student curriculum by Glam · Where Pins Turn Into Sales 🦋</p>
+
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('copyBtn');
+  var status = document.getElementById('copyStatus');
+  var pre = document.getElementById('masterPrompt');
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch(e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  btn.addEventListener('click', function(){
+    var text = pre.textContent.replace(/^\n+|\n+$/g, '');
+    function done(ok){
+      if(ok){
+        btn.textContent = 'Copied — paste it into your Muse';
+        btn.classList.add('copied');
+        status.textContent = 'Full prompt copied, brackets and all.';
+      } else {
+        status.textContent = 'Copy was blocked — open "Read the full prompt" below and copy it by hand.';
+      }
+      setTimeout(function(){
+        btn.textContent = 'Copy the Build Prompt';
+        btn.classList.remove('copied');
+      }, 3200);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(fallbackCopy(text)); });
+    } else {
+      done(fallbackCopy(text));
+    }
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var lessons = document.querySelectorAll('[data-lesson]');
+  var count = document.getElementById('progressCount');
+  var bar = document.getElementById('progressBar');
+  var total = lessons.length;
+  function update(){
+    var done = 0;
+    lessons.forEach(function(l){ if(l.classList.contains('done')) done++; });
+    count.textContent = done + ' of ' + total + ' lessons complete';
+    bar.style.width = (total ? (done / total * 100) : 0) + '%';
+  }
+  lessons.forEach(function(lesson){
+    var b = lesson.querySelector('[data-complete]');
+    if(!b) return;
+    b.addEventListener('click', function(){
+      var isDone = lesson.classList.toggle('done');
+      b.textContent = isDone ? '✓ Completed — tap to undo' : 'Mark complete';
+      update();
+    });
+  });
+  update();
+})();
+</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('downloadBtn');
+  var status = document.getElementById('downloadStatus');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    try {
+      var html = '<!doctype html>\n' + document.documentElement.outerHTML;
+      var blob = new Blob([html], {type:'text/html'});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'pinterest-farm-live-curriculum.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+      status.textContent = 'Downloading — check your downloads folder.';
+    } catch(e) {
+      status.textContent = 'Download was blocked here — use your browser menu to save or print this page instead.';
+    }
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var scenes = [
+    {k:"The Farm, Shown Step by Step", t:"This is a farm — in demo form", c:"Watch one day of Pins move through the exact system behind the Pinterest Farm. You see how it works, step by step — then you build your own farm with the Master Prompt below.", items:["Demo batch — cozy glam theme","10 Pins, one day","One pipeline, on repeat"]},
+    {k:"Step 1 · Scout", t:"Start with what Pinterest is rewarding", c:"Agent 1 reads Pinterest in guest view: the search terms and keywords people actually use, the top boards in your pillar, and the seasonal trends — worked 45 days ahead of the season.", items:["Guest view — no sign-in","Keywords people search","Trends, 45 days early"]},
+    {k:"Step 2 · Lock the Look", t:"Your character, in the exact outfit", c:"The outfit gets locked in chat, not in the video tool: your locked character — Slot 1 headshot, Slot 2 reference sheet — is placed in the exact Pinterest outfit, face and outfit checked. Then her outfit reference sheet is made from that approved photo.", items:["Slot 1 = headshot","Slot 2 = reference sheet","Outfit locked in chat first"]},
+    {k:"Step 3 · Image", t:"Images built from the lock", c:"Agent 2 creates the Pin images from those references — ultra realistic, 9:16, PNG. The references ARE the lock: no describing her, ever, or a different girl shows up.", items:["9:16 vertical, always","PNG, never webp","References only — no descriptions"]},
+    {k:"Step 4 · Story + Video", t:"Hooks, shots, and moving Pins", c:"Agent 3 writes the hook, the shots, and the script — scene action only — and Agent 4 builds the video Pin from the same lock. Every scene carries your one Product Presentation choice: Wearing or Holding, never both.", items:["Hook + shots + script","Video Pin built in chat","Wearing OR Holding — never both"]},
+    {k:"Step 5 · Pin Copy", t:"Copy that carries the click", c:"Agent 5 finishes the package: a keyword-rich title Pinterest search can find, a full warm description that ends with what to tap, the board pick from your real boards, keyword tags — and the destination link.", items:["Keyword title","Board from your real boards","Destination link, always"]},
+    {k:"Step 6 · Approve", t:"You are the gate", c:"The finished Pin package comes back to you in chat. Nothing — nothing — is posted automatically. You approve the exact package, or it doesn't move.", items:["Package returns in chat","Exact Pins approved","Your yes = go"]},
+    {k:"Step 7 · Schedule + Watch", t:"10 a day, 30 days ahead — then watch clicks", c:"Approved Pins go into Pinterest's own scheduler, 10 a day, a month ahead, on the hour and half hour. Then Analytics tells you the truth: outbound clicks are the scoreboard, winners get recreated, and the system runs again.", items:["Pinterest's own scheduler","Outbound clicks = scoreboard","Recreate the winners"]},
+    {k:"Your Turn", t:"Now build YOUR farm", c:"You just saw the whole system. Connect Muse, work the Setup Agent, lock your character, and run your first batch through the same pipeline.", items:["Copy the Master Prompt ↓","Pick your strongest pillar","Scout → Lock → Image → Story + Video → Pin Copy → Approve → Schedule"]}
+  ];
+  var idx = 0, elapsed = 0, playing = true, DUR = 4500, timer = null;
+  var kicker = document.getElementById('demoKicker'), title = document.getElementById('demoTitle'),
+      cap = document.getElementById('demoCaption'), items = document.getElementById('demoItems'),
+      count = document.getElementById('demoCount'), bar = document.getElementById('demoBar'),
+      playBtn = document.getElementById('demoPlay'), chapters = document.getElementById('demoChapters');
+  if(!kicker) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  scenes.forEach(function(s, i){
+    var b = document.createElement('button'); b.type = 'button';
+    b.textContent = s.k.split('·')[0].trim() === 'The Farm, Shown Step by Step' ? 'Intro' : (i === scenes.length-1 ? 'Your Turn' : s.k);
+    b.addEventListener('click', function(){ idx = i; elapsed = 0; render(); });
+    chapters.appendChild(b);
+  });
+  var chapBtns = chapters.querySelectorAll('button');
+  function render(){
+    var s = scenes[idx];
+    kicker.textContent = s.k; title.textContent = s.t; cap.textContent = s.c;
+    count.textContent = (idx+1) + ' / ' + scenes.length;
+    items.innerHTML = '';
+    s.items.forEach(function(it){ var sp = document.createElement('span'); sp.textContent = it; items.appendChild(sp); });
+    for(var i=0;i<chapBtns.length;i++){ chapBtns[i].classList.toggle('active', i===idx); }
+  }
+  function tick(){
+    elapsed += 100;
+    if(elapsed >= DUR){ elapsed = 0; idx = (idx+1) % scenes.length; render(); }
+    bar.style.width = (((idx * DUR) + elapsed) / (scenes.length * DUR) * 100) + '%';
+  }
+  function setPlay(on){
+    playing = on;
+    playBtn.textContent = on ? '❚❚ Pause' : '▶ Play';
+    if(on){ if(!timer) timer = setInterval(tick, 100); }
+    else { clearInterval(timer); timer = null; }
+  }
+  playBtn.addEventListener('click', function(){ setPlay(!playing); });
+  document.getElementById('demoRestart').addEventListener('click', function(){ idx = 0; elapsed = 0; bar.style.width = '0%'; render(); setPlay(true); });
+  render();
+  if(reduce){ setPlay(false); } else { setPlay(true); }
+})();
+</script>
+</body>
+</html>
