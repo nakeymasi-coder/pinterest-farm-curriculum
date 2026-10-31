@@ -583,7 +583,7 @@ body{background-image:radial-gradient(920px 520px at 96% -4%,rgba(230,0,35,.10) 
             <li>Play the <strong>Farm Demo</strong> at the top of this page and follow one day of Pins through the pipeline, Scout to Schedule</li>
             <li>On the <strong>Pin Intake Form</strong>, walk the fields in order: <strong>locked character → Mode → Product Presentation → Topic → Pin format → product → reference link → notes → destination link</strong></li>
             <li><strong>The 7 Modes</strong> are your 6 proven pillars plus one: Good Morning Affirmations · Cozy Glam Character Looks · Typography &amp; Word Art · Video Pins · Room &amp; Studio Decor Scenes · Creator Business Tips · and <strong>Product Spotlight</strong> for interactive Pins. A mode is a setting — it changes the search, the story, the shots, and the copy</li>
-            <li><strong>Product Presentation</strong> sits right after Mode — one single choice: <strong>Wearing</strong> the product OR <strong>Holding</strong> it. Never both</li>
+            <li><strong>Product Presentation</strong> sits right after Mode — one single choice: <strong>None</strong>, <strong>Wearing</strong>, <strong>Holding</strong>, <strong>Using</strong>, and five more ways to present it. Wearing and holding never mix in the same shot</li>
             <li>Submit, and your run lands in the <strong>Queue</strong>. Tap <strong>Run in Chat</strong> on it — that sets it to working and opens its Run in Chat card. Tap <strong>Copy Prompt</strong> and paste it into chat with Muse</li>
             <li>Watch the agents work in order: <strong>Agent 1 Scout</strong> reads Pinterest in guest view (keywords, top boards, trends worked 45 days ahead) · <strong>Agent 2 Image</strong> locks the outfit on your character in chat and builds the reference sheet · <strong>Agent 3 Story</strong> writes hook, shots, and script — scene action only, never a description of her · <strong>Agent 4 Video</strong> builds the video Pin · <strong>Agent 5 Pin Copy</strong> finishes the package</li>
           </ul>
@@ -624,7 +624,7 @@ body{background-image:radial-gradient(920px 520px at 96% -4%,rgba(230,0,35,.10) 
             <li>Open <strong>Solo Agent Forms</strong> — one form per agent, five in all, each one producing a <strong>clean, ready-to-copy prompt</strong> for that agent's job</li>
             <li><strong>Solo Scout:</strong> keywords, top boards, and seasonal trends for one pillar — your research run before a batch</li>
             <li><strong>Solo Pin Copy:</strong> hand it a finished Pin and it returns the full copy package — and it carries the standing order on its own form: <strong>a Pin is not done until it has a keyword title, a board, and a destination link</strong></li>
-            <li>The solo <strong>Story</strong> and solo <strong>Video</strong> forms carry the <strong>Product Presentation</strong> choice too — Wearing or Holding, never both, on every form where it belongs</li>
+            <li>The solo <strong>Story</strong> and solo <strong>Video</strong> forms carry the <strong>Product Presentation</strong> choice too — one choice per run, None included, on every form where it belongs</li>
             <li>Solo jobs land in the <strong>same Queue</strong>, newest first, and run the same way: Run in Chat, copy, paste, approve</li>
           </ul>
         </div>
@@ -777,8 +777,12 @@ RUN IN CHAT: the card a Queue run opens into (see RUN IN CHAT below).
 PIN INTAKE FORM - fields in this exact order:
 1. Locked character picker (or "create a new character")
 2. Mode (the 7 modes below)
-3. PRODUCT PRESENTATION - right after Mode, one single choice: Wearing the
-   product OR Holding the product. Never both.
+3. PRODUCT PRESENTATION - right after Mode, one single choice: None
+   (product not presented), Wearing the product, Holding the product, Using
+   the product, Showing it close to camera, Sitting beside her in frame,
+   Unboxing / opening it, Holding it up by her face, or Holding in some
+   scenes and wearing in others. Wearing and holding never mix in the same
+   shot. Every form category also offers a None option.
 4. Topic
 5. Pin format / video length (for example: a still pin, an idea pin, or a
    30 second video pin)
@@ -1011,8 +1015,8 @@ are my 6 analytics-proven content pillars plus product spotlight:
    takes people to an interactive product page or demo, the way an interactive product pin works: play first, then join or buy.
 
 SOLO AGENT FORMS: one per agent. The solo Story Agent form and the solo
-Video Agent form must also include the Product Presentation choice (Wearing
-or Holding). Every solo form produces a clean, ready-to-copy prompt for that
+Video Agent form must also include the Product Presentation choice (the full list,
+None included). Every solo form produces a clean, ready-to-copy prompt for that
 agent job, prefilled from what I entered.
 
 QUEUE: full runs and solo jobs together, newest first. Each card shows:
@@ -1055,14 +1059,16 @@ THE WORKFLOW (write this into the dashboard and into every run prompt):
 
 THE SCENE PROMPT SHAPE - use this for every scene, and nothing else about her:
 "Use the reference images and keep the character perfectly consistent. [Scene action only.] [Spoken line, if any.] Wearing the product, not holding it."
-For a Holding run, the last sentence swaps to: "Holding the product, not wearing it."
+The last sentence swaps to match the choice - Holding: "Holding the product, not wearing it." Using: "Using the product on camera, not just holding it." Close to camera: "Showing the product close to camera." Beside her: "The product sits beside her in frame - she is not holding it or wearing it." Unboxing: "Unboxing the product on camera." By her face: "Holding the product up beside her face." Mixed scenes: "Holding the product in some scenes and wearing it in others - never both in the same shot." A None run adds no sentence.
 NEVER describe her in a scene prompt - no face, hair, skin, body, or outfit
 description. Describing her overrides the references and creates a different
 girl.
 
-PRODUCT PRESENTATION - either/or, never both:
+PRODUCT PRESENTATION - one choice per run:
 A Wearing run: every prompt ends "wearing the product, not holding it."
 A Holding run: every prompt ends "holding the product, not wearing it."
+Every other choice carries its own sentence (see THE SCENE PROMPT SHAPE).
+A None run ends with no presentation sentence.
 Never show her wearing an outfit while holding that same outfit on a
 hanger. Reject and regenerate any image that shows both. If a video needs
 both, use separate scenes - holding first, wearing later - never the same
@@ -1129,7 +1135,7 @@ would normally use, this prompt wins.
       <li><span class="box"></span><span><strong>Setup Agent 7 of 7:</strong> business account, profile that sells, website claimed</span></li>
       <li><span class="box"></span><span><strong>First 5 keyword boards created</strong> — named like search phrases</span></li>
       <li><span class="box"></span><span><strong>Character locked:</strong> Slot 1 headshot + Slot 2 body sheet, JPG or PNG</span></li>
-      <li><span class="box"></span><span><strong>Product Presentation chosen</strong> on every run — Wearing OR Holding, never both</span></li>
+      <li><span class="box"></span><span><strong>Product Presentation chosen</strong> on every run — one choice, None included</span></li>
       <li><span class="box"></span><span><strong>First full farm run done</strong> — Queue → Run in Chat → package approved</span></li>
       <li><span class="box"></span><span><strong>Every Pin package checked:</strong> keyword title, board, destination link</span></li>
       <li><span class="box"></span><span><strong>First 7 days scheduled</strong> — 10 a day in Pinterest's own scheduler</span></li>
@@ -1165,7 +1171,7 @@ would normally use, this prompt wins.
       <div class="rule"><div class="rnum">Rule 3</div><h3>Existing content first</h3><p>Feed the farm what you already have — photos, art, past posts — reissued fresh. Create new only when a slot truly has nothing.</p></div>
       <div class="rule"><div class="rnum">Rule 4</div><h3>Recreate winners, retire losers</h3><p>Your proven Pins earn fresh recreations. Pins nobody clicks get retired, not repeated. The scoreboard decides.</p></div>
       <div class="rule"><div class="rnum">Rule 5</div><h3>No unverified price claims</h3><p>No price, discount, or sale claim in any Pin copy unless a live price was actually verified. Prices live on the product page.</p></div>
-      <div class="rule"><div class="rnum">Rule 6</div><h3>The lock is the lock</h3><p>Scene prompts carry action only — never a description of her. And a product is Wearing or Holding, never both in the same shot.</p></div>
+      <div class="rule"><div class="rnum">Rule 6</div><h3>The lock is the lock</h3><p>Scene prompts carry action only — never a description of her. And a product gets one presentation choice per run — wearing and holding never mix in the same shot.</p></div>
     </div>
   </section>
 
@@ -1325,7 +1331,7 @@ would normally use, this prompt wins.
     {k:"Step 1 · Scout", t:"Start with what Pinterest is rewarding", c:"Agent 1 reads Pinterest in guest view: the search terms and keywords people actually use, the top boards in your pillar, and the seasonal trends — worked 45 days ahead of the season.", items:["Guest view — no sign-in","Keywords people search","Trends, 45 days early"]},
     {k:"Step 2 · Lock the Look", t:"Your character, in the exact outfit", c:"The outfit gets locked in chat, not in the video tool: your locked character — Slot 1 headshot, Slot 2 reference sheet — is placed in the exact Pinterest outfit, face and outfit checked. Then her outfit reference sheet is made from that approved photo.", items:["Slot 1 = headshot","Slot 2 = reference sheet","Outfit locked in chat first"]},
     {k:"Step 3 · Image", t:"Images built from the lock", c:"Agent 2 creates the Pin images from those references — ultra realistic, 9:16, PNG. The references ARE the lock: no describing her, ever, or a different girl shows up.", items:["9:16 vertical, always","PNG, never webp","References only — no descriptions"]},
-    {k:"Step 4 · Story + Video", t:"Hooks, shots, and moving Pins", c:"Agent 3 writes the hook, the shots, and the script — scene action only — and Agent 4 builds the video Pin from the same lock. Every scene carries your one Product Presentation choice: Wearing or Holding, never both.", items:["Hook + shots + script","Video Pin built in chat","Wearing OR Holding — never both"]},
+    {k:"Step 4 · Story + Video", t:"Hooks, shots, and moving Pins", c:"Agent 3 writes the hook, the shots, and the script — scene action only — and Agent 4 builds the video Pin from the same lock. Every scene carries your one Product Presentation choice — None, Wearing, Holding, Using, and more.", items:["Hook + shots + script","Video Pin built in chat","One presentation choice per run"]},
     {k:"Step 5 · Pin Copy", t:"Copy that carries the click", c:"Agent 5 finishes the package: a keyword-rich title Pinterest search can find, a full warm description that ends with what to tap, the board pick from your real boards, keyword tags — and the destination link.", items:["Keyword title","Board from your real boards","Destination link, always"]},
     {k:"Step 6 · Approve", t:"You are the gate", c:"The finished Pin package comes back to you in chat. Nothing — nothing — is posted automatically. You approve the exact package, or it doesn't move.", items:["Package returns in chat","Exact Pins approved","Your yes = go"]},
     {k:"Step 7 · Schedule + Watch", t:"10 a day, 30 days ahead — then watch clicks", c:"Approved Pins go into Pinterest's own scheduler, 10 a day, a month ahead, on the hour and half hour. Then Analytics tells you the truth: outbound clicks are the scoreboard, winners get recreated, and the system runs again.", items:["Pinterest's own scheduler","Outbound clicks = scoreboard","Recreate the winners"]},
